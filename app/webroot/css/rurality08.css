@@ -1,0 +1,189 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	margin: 0;
+	padding: 0;	
+	line-height:132%
+}
+p {
+margin:0;
+padding:0;
+}
+#formbase {
+position:relative;
+top:8px;
+z-index:1;
+}
+#data {
+position:absolute;
+left:0px;
+top:0px;
+z-index:100;
+}
+
+#score {
+	position:absolute;
+	top:839px;
+	left:434px;
+	width:50px;
+	height:21px;
+}
+
+#data1a {
+	position:absolute;
+	width:322px;
+	top:547px;
+	left:61px;
+}
+#data1b {
+	position:absolute;
+	width:82px;
+	top:547px;
+	left:400px;
+}
+#data1c {
+	position:absolute;
+	width:80px;
+	top:547px;
+	left:492px;
+}
+#data1d {
+	position:absolute;
+	width:80px;
+	top:547px;
+	left:582px;
+}
+#data1e {
+	position:absolute;
+	width:59px;
+	top:547px;
+	left:672px;
+}
+
+#data2a {
+	position:absolute;
+	width:322px;
+	top:601px;
+	left:61px;
+}
+#data2b {
+	position:absolute;
+	width:82px;
+	top:601px;
+	left:400px;
+}
+#data2c {
+	position:absolute;
+	width:80px;
+	top:601px;
+	left:492px;
+}
+#data2d {
+	position:absolute;
+	width:80px;
+	top:601px;
+	left:582px;
+}
+#data2e {
+	position:absolute;
+	width:59px;
+	top:601px;
+	left:672px;
+}
+
+
+
+#data3a {
+	position:absolute;
+	width:322px;
+	top:656px;
+	left:61px;
+}
+#data3b {
+	position:absolute;
+	width:82px;
+	top:656px;
+	left:400px;
+}
+#data3c {
+	position:absolute;
+	width:80px;
+	top:656px;
+	left:492px;
+}
+#data3d {
+	position:absolute;
+	width:80px;
+	top:656px;
+	left:582px;
+}
+#data3e {
+	position:absolute;
+	width:53px;
+	top:656px;
+	left:672px;
+}
+
+
+#data4a {
+	position:absolute;
+	width:322px;
+	top:710px;
+	left:61px;
+}
+#data4b {
+	position:absolute;
+	width:80px;
+	top:710px;
+	left:400px;
+}
+#data4c {
+	position:absolute;
+	width:80px;
+	top:710px;
+	left:492px;
+}
+#data4d {
+	position:absolute;
+	width:80px;
+	top:710px;
+	left:582px;
+}
+#data4e {
+	position:absolute;
+	width:54px;
+	top:710px;
+	left:672px;
+}
+
+
+#data5a {
+	position:absolute;
+	width:322px;
+	top:764px;
+	left:61px;
+}
+#data5b {
+	position:absolute;
+	width:77px;
+	top:764px;
+	left:400px;
+}
+#data5c {
+	position:absolute;
+	width:80px;
+	top:764px;
+	left:492px;
+}
+#data5d {
+	position:absolute;
+	width:80px;
+	top:764px;
+	left:582px;
+}
+#data5e {
+	position:absolute;
+	width:57px;
+	top:764px;
+	left:673px;
+}

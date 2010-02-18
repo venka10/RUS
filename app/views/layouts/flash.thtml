@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title><?php echo $page_title?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<?php if (Configure::read() == 0) { ?>
+<meta http-equiv="Refresh" content="<?php echo $pause?>;url=<?php echo $url?>"/>
+<?php } ?>
+<?php echo $html->css("admin"); ?>
+</head>
+<body>
+<h1>RUS Toolkit</h1>
+
+<div align="center"><p><a href="<?php echo $url?>"><?php echo $message?></a></p></div>
+
+<div id="footer">
+
+
+<?php if ($session->check('AppUser')): ?>
+	<?php echo $html->link('Logout', '/AppUsers/logout'); ?>
+<?php else: ?>
+	<?php echo $html->link('Log In', '/AppUsers/login'); ?>
+<?php endif ?>
+ &#8226; <?php echo $html->link('View Projects', '/Projects'); ?> 
+ &#8226; <?php echo $html->link('Maintain Users', '/AppUsers'); ?>
+ &#8226; <?php echo $html->link('Maintain Roles', '/AppRoles'); ?>
+ &#8226; <?php echo $html->link('Maintain Regions', '/TandbergRegions'); ?>
+
+</div>
+</body>
+</html>

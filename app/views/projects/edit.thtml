@@ -1,0 +1,61 @@
+<h2>Edit Project</h2>
+<form action="<?php echo $html->url('/projects/edit/'.$html->tagValue('Project/id')); ?>" method="post">
+<table border="1" align="center" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr><td>
+	<?php echo $form->labelTag('Project/name', 'Project Name');?>
+	</td><td>
+ 	<?php echo $html->input('Project/name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Project/name', 'Please enter the name.');?>
+</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('Project/tandberg_regions_id', 'Tandberg Regions');?>
+	</td><td>
+ 	<?php echo $html->selectTag('Project/tandberg_regions_id', $tandbergRegions, $html->tagValue('Project/tandberg_regions_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Project/tandberg_regions_id', 'Please select the Tandberg Regions.') ?>
+</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('Project/states_id', 'State');?>
+	</td><td>
+ 	<?php echo $html->selectTag('Project/states_id', $states, $html->tagValue('Project/states_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Project/states_id', 'Please select the States.') ?>
+</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('AppUser/AppUser', 'Writer');?>
+	</td><td>
+	<?php echo $html->selectTag('AppUser/AppUser', $appUsers, $selectedAppUsers, array(), array(), true);?> <!-- 'multiple' => 'multiple' -->
+	<?php echo $html->tagErrorMsg('AppUser/AppUser', 'Please select the Related AppUsers.');?>
+</td></tr>
+<?php if(false): ?>
+<tr><td>
+	<?php echo $form->labelTag('Project/leveraging_points', 'Leveraging Points');?>
+	</td><td>
+ 	<?php echo $html->input('Project/leveraging_points', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Project/leveraging_points', 'Please enter the Leveraging Points.');?>
+</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('Project/ez_ec_points', 'Ez Ec Points');?>
+	</td><td>
+ 	<?php echo $html->input('Project/ez_ec_points', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Project/ez_ec_points', 'Please enter the Ez Ec Points.');?>
+</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('Project/score', 'Score');?>
+	</td><td>
+ 	<?php echo $html->input('Project/score', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Project/score', 'Please enter the Score.');?>
+</td></tr>
+<?php endif; ?>
+<?php echo $html->hidden('Project/id')?>
+<tr><td>&nbsp;</td><td align="right"><?php echo $html->submit('Save');?><input type="button" name="Cancel" value="Cancel" onclick="history.go(-1);" /></td></tr>
+</table>
+</form>
+<ul class="actions">
+<?php if ($session->read('AppRole_name') == 'SuperAdmin' || $session->read('AppRole_name') == 'Regional Mgr'): ?>
+	<li><?php echo $html->link('Delete Project','/projects/delete/' . $html->tagValue('Project/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Project/id'));?>
+<?php endif; ?>
+<li><?php echo $html->link('List Projects', '/projects/index')?></li>
+<?php if(false): ?>
+<li><?php echo $html->link('View Tandberg Regions', '/tandberg_regions/index/');?></li>
+<li><?php echo $html->link('Add Tandberg Regions', '/tandberg_regions/add/');?></li>
+<?php endif; ?>
+</ul>

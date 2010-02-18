@@ -1,0 +1,50 @@
+<h2>Edit Project</h2>
+<form action="<?php echo $html->url('/projects/edit/'.$html->tagValue('Project/id')); ?>" method="post">
+<div class="required"> 
+	<?php echo $form->labelTag('Project/states_id', 'States');?>
+ 	<?php echo $html->selectTag('Project/states_id', $states, $html->tagValue('Project/states_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Project/states_id', 'Please select the States.') ?>
+</div>
+<div class="required"> 
+	<?php echo $form->labelTag('Project/tandberg_regions_id', 'Tandberg Regions');?>
+ 	<?php echo $html->selectTag('Project/tandberg_regions_id', $tandbergRegions, $html->tagValue('Project/tandberg_regions_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Project/tandberg_regions_id', 'Please select the Tandberg Regions.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Project/description', 'Description');?>
+ 	<?php echo $html->input('Project/description', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Project/description', 'Please enter the Description.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Project/leveraging_points', 'Leveraging Points');?>
+ 	<?php echo $html->input('Project/leveraging_points', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Project/leveraging_points', 'Please enter the Leveraging Points.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Project/ez_ec_points', 'Ez Ec Points');?>
+ 	<?php echo $html->input('Project/ez_ec_points', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Project/ez_ec_points', 'Please enter the Ez Ec Points.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Project/score', 'Score');?>
+ 	<?php echo $html->input('Project/score', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Project/score', 'Please enter the Score.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('AppUser/AppUser', 'Related AppUsers');?>
+ 	<?php echo $html->selectTag('AppUser/AppUser', $appUsers, $selectedAppUsers, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), true);?>
+	<?php echo $html->tagErrorMsg('AppUser/AppUser', 'Please select the Related AppUsers.');?>
+</div>
+<?php echo $html->hidden('Project/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/projects/delete/' . $html->tagValue('Project/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Project/id'));?>
+<li><?php echo $html->link('List Projects', '/projects/index')?></li>
+<li><?php echo $html->link('View States', '/states/index/');?></li>
+<li><?php echo $html->link('Add States', '/states/add/');?></li>
+<li><?php echo $html->link('View Tandberg Regions', '/tandberg_regions/index/');?></li>
+<li><?php echo $html->link('Add Tandberg Regions', '/tandberg_regions/add/');?></li>
+</ul>

@@ -1,0 +1,66 @@
+<div class="sites">
+<h2>List Sites</h2>
+
+<table align="center" border="1" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr>
+	<th>Id</th>
+	<th>Projects</th>
+	<th>Census Designations</th>
+	<th>Site Types</th>
+	<th>Site Name</th>
+	<th>Site Address</th>
+	<th>County</th>
+	<th>School District</th>
+	<th>Congressional District</th>
+	<th>Rwf Census Population</th>
+	<th>Rwf Rurality Points</th>
+	<th>Nslpf Total Students</th>
+	<th>Nslpf Perc Eligible</th>
+	<th>Nslpf Source Data</th>
+	<th>Rwn Population In Service</th>
+	<th>Rwn Rurality Points</th>
+	<th>Rwn Product</th>
+	<th>Nslpn Total Students</th>
+	<th>Nslpn Perc Eligible</th>
+	<th>Nslpn Source Data2</th>
+	<th>Nslp Url</th>
+	<th>Lon Lat</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($sites as $site): ?>
+<tr>
+	<td><?php echo $site['Site']['id']; ?></td>
+	<td>&nbsp;<?php echo $html->link($site['Project']['name'], '/projects/view/' .$site['Project']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($site['CensusDesignation']['id'], '/census_designations/view/' .$site['CensusDesignation']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($site['SiteType']['id'], '/site_types/view/' .$site['SiteType']['id'])?></td>
+	<td><?php echo $site['Site']['site_name']; ?></td>
+	<td><?php echo $site['Site']['site_address']; ?></td>
+	<td><?php echo $site['Site']['county']; ?></td>
+	<td><?php echo $site['Site']['school_district']; ?></td>
+	<td><?php echo $site['Site']['congressional_district']; ?></td>
+	<td><?php echo $site['Site']['rwf_census_population']; ?></td>
+	<td><?php echo $site['Site']['rwf_rurality_points']; ?></td>
+	<td><?php echo $site['Site']['nslpf_total_students']; ?></td>
+	<td><?php echo $site['Site']['nslpf_perc_eligible']; ?></td>
+	<td><?php echo $site['Site']['nslpf_source_data']; ?></td>
+	<td><?php echo $site['Site']['rwn_population_in_service']; ?></td>
+	<td><?php echo $site['Site']['rwn_rurality_points']; ?></td>
+	<td><?php echo $site['Site']['rwn_product']; ?></td>
+	<td><?php echo $site['Site']['nslpn_total_students']; ?></td>
+	<td><?php echo $site['Site']['nslpn_perc_eligible']; ?></td>
+	<td><?php echo $site['Site']['nslpn_source_data2']; ?></td>
+	<td><?php echo $site['Site']['nslp_url']; ?></td>
+	<td><?php echo $site['Site']['lon_lat']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/sites/view/' . $site['Site']['id'])?>
+		<?php echo $html->link('Edit','/sites/edit/' . $site['Site']['id'])?>
+		<?php echo $html->link('Delete','/sites/delete/' . $site['Site']['id'], null, 'Are you sure you want to delete id ' . $site['Site']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Site', '/sites/add'); ?></li>
+</ul>
+</div>

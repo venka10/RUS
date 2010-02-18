@@ -1,0 +1,59 @@
+body {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 13px;
+	margin: 0;
+	padding: 0;	
+}
+p {
+margin:0;
+padding:0;
+}
+
+
+//div {
+//background-color:black;
+//}
+
+#formbase {
+position:relative;
+left:-10px;
+top:-20px;
+z-index:1;
+}
+#data {
+position:absolute;
+left:0px;
+top:0px;
+z-index:100;
+}
+
+#data2a {
+position:absolute;
+width:400px;
+top:422px;
+left:104px;
+}
+#data2b {
+position:absolute;
+width:100px;
+top:422px;
+left:534px;
+}
+#data2c {
+position:absolute;
+width:80px;
+top:422px;
+left:650px;
+}
+#data2d {
+position:absolute;
+width:80px;
+top:422px;
+left:766px;
+}
+#data2e {
+position:absolute;
+width:90px;
+top:422px;
+left:880px;
+}

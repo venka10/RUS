@@ -1,0 +1,25 @@
+<div class="appRole">
+<h2>View Role</h2>
+
+<table border="1" align="center" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr>
+	<th>Id</dt>
+	<td>&nbsp;<?php echo $appRole['AppRole']['id']?></td>
+</tr>
+<tr>
+	<th>Name</dt>
+	<td>&nbsp;<?php echo $appRole['AppRole']['name']?></td>
+</tr>
+<tr>
+	<th>Description</th>
+	<td>&nbsp;<?php echo $appRole['AppRole']['description']?></td>
+</tr>
+</table>
+<ul class="actions">
+	<li><?php echo $html->link('Edit App Role',   '/app_roles/edit/' . $appRole['AppRole']['id']) ?> </li>
+	<!-- <li><?php //echo $html->link('Delete App Role', '/app_roles/delete/' . $appRole['AppRole']['id'], null, 'Are you sure you want to delete: id ' . $appRole['AppRole']['id'] . '?') ?> </li>  -->
+	<li><?php echo $html->link('List App Roles',   '/app_roles/index') ?> </li>
+	<!-- <li><?php //echo $html->link('New App Role',	'/app_roles/add') ?> </li>  -->
+</ul>
+
+</div>

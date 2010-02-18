@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Printing Instructions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	margin:20px;
+	padding:0;
+	width:600px;
+}
+</style>
+</head>
+
+<body>
+<h2>To print a worksheet... </h2>
+<p>Click on the link for each worksheet to proofread and print. If continuation pages are needed, links will appear. In the new browser window or tab that pops up, use the following instructions for your particular browser:</p>
+<h3>IE7</h3>
+<p>Select File &gt; Print Preview. In the Print Preview window... </p>
+<p><img src="/img/IE-pp.gif" width="511" height="156"></p>
+<ol>
+  <li>Select the proper page orientation (landscape for Site worksheets).</li>
+  <li>Open the Page Setup dialog and reset the margins to .25&quot;. It may fight with you, but if the top and left margins are set, that should work. </li>
+  <li>Toggle the header/footer off. (Do not submit worksheets with the url of this site visible!) </li>
+  <li>Set the image size to 100%.</li>
+  <li>Print and proof the worksheet. </li>
+</ol>
+<h3>Firefox (on PC)</h3>
+<p>Select File &gt; Print Preview. In the Print Preview window... </p>
+<p><img src="/img/FF-pp1.gif" width="463" height="319"></p>
+<ol>
+  <li>Click the Page Setup button</li>
+  <li>Select the proper page orientation (landscape for Site worksheets).</li>
+  <li>Uncheck &quot;Shrink to fit Page Width&quot; and ensure &quot;Scale&quot; resets to 100%.<br>
+    <br>
+  <img src="/img/FF-pp2.gif" width="459" height="397">  </li>
+  <li>Select the Margins &amp; Header/Footer tab in the Page Setup box.</li>
+  <li>Set all  margins to .25&quot;</li>
+  <li>Set all six header/footer boxes to &quot;blank&quot;. (Do not submit worksheets with the url of this site visible!) </li>
+  <li>Close the dialog box, print, and proof your page. </li>
+</ol>
+<h3>Safari</h3>
+<p>Go to File &gt; Page setup...</p>
+<p><img src="/img/page-setup.png" width="425" height="310"></p>
+<p>Select the proper page orientation (landscape for Site worksheets).</p>
+<p>Set the scale to 100%</p>
+<p>Go to File &gt; Print. </p>
+<p>Click Copies &amp; Pages and select Safari from the drop-down menu. Uncheck the &quot;Print webpage information in headers and footers&quot; box. (Do not submit worksheets with the url of this site visible!) </p>
+<p><img src="/img/print-safari.png" width="584" height="269"></p>
+<p>Select the Preview Button</p>
+<p>With the Preview window open, go to Preview &gt; Preferences. On the Images tab of the Preferences dialog, make sure Default image size is set to &quot;Actual size&quot; and the box &quot;Respect image DPI...&quot; is checked. Close the Preferences dialog box. </p>
+<p><img src="/img/s-prnt-pref.png" width="498" height="396"> </p>
+</body>
+</html>

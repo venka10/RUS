@@ -1,0 +1,152 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	margin: 0;
+	padding: 0;	
+	line-height:132%
+}
+p {
+margin:0;
+padding:0;
+}
+#formbase {
+position:relative;
+
+top:-20px;
+z-index:1;
+}
+#data {
+position:absolute;
+left:0px;
+top:0px;
+z-index:100;
+}
+
+#data1a {
+position:absolute; width:400px; top:359px; left:74px;
+}
+#data1b {
+position:absolute; width:100px; top:360px; left:505px;
+}
+#data1c {
+	position:absolute;
+	width:108px;
+	top:360px;
+	left:618px;
+}
+#data1d {
+	position:absolute;
+	width:106px;
+	top:360px;
+	left:735px;
+}
+#data1e {
+	position:absolute;
+	width:102px;
+	top:360px;
+	left:851px;
+}
+
+#data2a {
+position:absolute; width:400px; top:415px; left:74px;
+}
+#data2b {
+position:absolute; width:100px; top:416px; left:505px;
+}
+#data2c {
+	position:absolute;
+	width:108px;
+	top:416px;
+	left:617px;
+}
+#data2d {
+	position:absolute;
+	width:106px;
+	top:416px;
+	left:735px;
+}
+#data2e {
+	position:absolute;
+	width:102px;
+	top:416px;
+	left:851px;
+}
+
+
+
+#data3a {
+position:absolute; width:400px; top:473px; left:74px;
+}
+#data3b {
+position:absolute; width:100px; top:474px; left:505px;
+}
+#data3c {
+	position:absolute;
+	width:108px;
+	top:474px;
+	left:617px;
+}
+#data3d {
+	position:absolute;
+	width:106px;
+	top:474px;
+	left:735px;
+}
+#data3e {
+	position:absolute;
+	width:102px;
+	top:474px;
+	left:851px;
+}
+
+
+#data4a {
+position:absolute; width:400px; top:529px; left:74px;
+}
+#data4b {
+position:absolute; width:100px; top:530px; left:505px;
+}
+#data4c {
+	position:absolute;
+	width:108px;
+	top:530px;
+	left:617px;
+}
+#data4d {
+	position:absolute;
+	width:106px;
+	top:530px;
+	left:735px;
+}
+#data4e {
+	position:absolute;
+	width:102px;
+	top:530px;
+	left:851px;
+}
+
+
+#data5a {
+position:absolute; width:400px; top:585px; left:74px;
+}
+#data5b {
+position:absolute; width:100px; top:586px; left:505px;
+}
+#data5c {
+	position:absolute;
+	width:108px;
+	top:586px;
+	left:617px;
+}
+#data5d {
+	position:absolute;
+	width:106px;
+	top:586px;
+	left:735px;
+}
+#data5e {
+	position:absolute;
+	width:102px;
+	top:586px;
+	left:851px;
+}

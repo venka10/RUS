@@ -1,0 +1,23 @@
+<div id="login">
+<p style="font-size: 12px" >Welcome to the new RUS Toolkit website.  Please update any bookmarks accordingly.</><br>
+<form action="<?php echo $html->url('/app_users/login'); ?>" method="post" style="display:block">
+  <p>Email: 
+    <?php echo $html->input('AppUser/user_name', array('size' => 20)); ?>
+  </p>
+  <p>Password: 
+    <?php echo $html->password('AppUser/pwd1', array('size' => 20)); ?>
+  </p>
+  <p>
+    <?php echo $html->submit('Login'); ?>
+  </p>
+  <p>
+  	<?php if ($error): ?>
+	<p>The login credentials you supplied could not be recognized. Please try again.</p>
+	<?php endif; ?>
+  </p>
+</form>
+<p style="display:none">The System is temporarily down while upgrades are installed, please check back later.</p>
+</div>
+
+
+

@@ -1,0 +1,14 @@
+<h2>New Tandberg Region</h2>
+<form action="<?php echo $html->url('/tandberg_regions/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('TandbergRegion/name', 'Name');?>
+ 	<?php echo $html->input('TandbergRegion/name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('TandbergRegion/name', 'Please enter the Description.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Tandberg Regions', '/tandberg_regions/index')?></li>
+</ul>

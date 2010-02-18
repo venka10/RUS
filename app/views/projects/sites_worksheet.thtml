@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title><?php echo $pagetitle; ?></title>
+<?php echo $html->css('site'); ?>
+<!-- link href="grant.css" rel="stylesheet" type="text/css" -->
+</head>
+
+<body>
+<?php //pr($project); ?>
+<div id="formbase">
+	<?php //echo $html->image('sites2-360-gif8-blank.gif',array("id"=>"large","width"=>"1056px","height"=>"816px")); ?>
+	<?php echo $html->image('site.png',array("id"=>"large","width"=>"1056px","height"=>"816px")); ?>
+<!-- img src="images/sites2-360-gif82.gif" id="large" width="1056px" height="816px" -->
+  <div id="data">
+  	<?php //$row_increment = 56; $top_value_start=367; $left_position_adjustor=array(0,0,0,0,0); //original ?>
+  	<?php //$row_increment = 52; $top_value_start=367-56; $left_position_adjustor=array(-56,-76,-86,-96,-106); ?>
+ 	<?php $row_increment = 57; $top_value_start=367+12; $left_position_adjustor=array(0,0,0,0,0); //original ?>
+  	<?php for($i=0; $i<count($project['Site']) && $i < 5; $i++): ?>
+  		<?php if(!isset($project['SiteInsertRowIndex']) || (isset($project['SiteInsertRowIndex']) && $project['SiteInsertRowIndex'] != $i)): ?>
+		  <div id="data<?php echo $i+1 ?>a">
+			    <p><?php echo $project['Site'][$i]['site_name']; ?>
+			    <?php if(false && !empty($project['Site'][$i]['abbreviation'])):?>
+			    &nbsp;<?php echo "(".$project['Site'][$i]['abbreviation'].")"; ?>
+			    <?php endif; ?>
+			    </p>
+			    <p><?php echo $project['Site'][$i]['site_address']; /*str_replace(array("\r\n", "\n", "\r"),'<br/>',$project['Site'][$i]['site_address']);*/ ?></p>
+			    <p><?php echo $project['Site'][$i]['lon_lat']; ?></p>
+		  </div>
+		  <div id="data<?php echo $i+1 ?>b" >
+	      		<p><?php echo $project['Site'][$i]['SiteType']['cd']; ?></p>
+	      </div>
+		  <div id="data<?php echo $i+1 ?>c">
+	      		<p><?php echo $project['Site'][$i]['county']; ?></p>
+	      </div>
+		  <div id="data<?php echo $i+1 ?>d">
+	      		<p><?php echo $project['Site'][$i]['school_district']; ?> </p>
+	      </div>
+		  <div id="data<?php echo $i+1 ?>e">
+	      		<p><?php echo $project['Site'][$i]['congressional_district']; ?></p>
+	      </div>
+	    <?php endif; ?>
+    <?php endfor; ?>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title><?php echo $title_for_layout?></title>
+<?php echo $html->css("admin"); ?>
+<?php echo $javascript->link("prototype"); ?>
+<?php echo $javascript->link("scriptaculous"); ?>
+</head>
+
+<body>
+<h1>RUS Toolkit</h1>
+
+
+<?php echo $content_for_layout ?>
+<br>
+<br>
+<br>
+<?php $session->flash(); ?>
+<div id="footer">
+<?php if ($session->check('AppUser')): ?>
+	<?php echo $html->link('Logout', '/AppUsers/logout'); ?>
+	 &#8226; <?php echo $html->link('View Projects', '/Projects'); ?> 
+	<?php if($session->check('AppRole_name') && ($session->read('AppRole_name') == 'SuperAdmin' || $session->read('AppRole_name') == 'Regional Mgr')): ?>
+	 &#8226; <?php echo $html->link('Maintain Users', '/AppUsers'); ?>
+	 <!-- &#8226;  --><?php //echo $html->link('Maintain Roles', '/AppRoles'); ?>
+	 <!-- &#8226;  --><?php //echo $html->link('Maintain Regions', '/TandbergRegions'); ?>
+	<?php endif; ?>
+<?php else: ?>
+	<?php //echo $html->link('Log In', '/AppUsers/login'); ?>
+<?php endif ?>
+</div>
+<?php echo $javascript->link("rus"); ?>
+</body>
+</html>

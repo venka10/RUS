@@ -1,0 +1,45 @@
+<div class="projects">
+<h2>Archived Projects</h2>
+<!-- 
+<?php if ($session->read('AppRole_name') == 'SuperAdmin'  || $session->read('AppRole_name') == 'Regional Mgr'): ?>
+<p align="right"><strong><?php //echo $html->link('Administer Users', '/AppUsers');?></strong></p>
+<?php endif; ?>
+ -->
+ <table align="center" border="1" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+
+<tr>
+	<!-- >th>Id</th  -->
+	<th>Project</th>
+	<th>Region</th>
+	<th>State</th>
+	<th>Writer</th>
+	<th>&nbsp;</th>
+</tr>
+<?php foreach ($projects as $project): ?>
+<tr>
+	<td><?php echo $project['Project']['name']; ?></td>
+	<td>&nbsp;<?php echo $project['TandbergRegion']['name']?></td>
+	<td>&nbsp;<?php echo $project['State']['name']?></td>
+	<td>&nbsp;<?php foreach ($project['AppUser'] as $appUser):?>
+			<?php echo $appUser['last_name'];?>
+	<?php endforeach; ?></td>
+	<td class="actions">
+		<?php if ($session->read('AppRole_name') == 'SuperAdmin'): ?>
+			<?php echo $html->link('Reactivate', '/projects/reactivate/' . $project['Project']['id']);?>
+		<?php endif; ?>
+	</td>
+	
+</tr>
+<?php endforeach; ?>
+<tr>
+	<!-- >td>Id</td  -->
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+
+</div>

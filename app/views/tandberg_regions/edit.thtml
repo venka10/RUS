@@ -1,0 +1,21 @@
+<h2>Edit Tandberg Region</h2>
+<form action="<?php echo $html->url('/tandberg_regions/edit/'.$html->tagValue('TandbergRegion/id')); ?>" method="post">
+<table border="1" align="center" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr><td>
+	<?php echo $form->labelTag('TandbergRegion/name', 'Name');?>
+	</td><td>
+ 	<?php echo $html->input('TandbergRegion/name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('TandbergRegion/name', 'Please enter the name.');?>
+</td></tr>
+<?php echo $html->hidden('TandbergRegion/id')?>
+<tr><td colspan="2">
+	<?php echo $html->submit('Save');?>
+</td></tr></table>
+</form>
+<ul class="actions">
+<li><a href="#" onclick="<?php echo "if(confirm('Are you sure you want to delete: id " . $html->tagValue('TandbergRegion/id') . "')){ document.getElementById('deleteForm').submit(); }" ?>">Delete Tandberg Region</a></td>
+<li><?php echo $html->link('List Tandberg Regions', '/tandberg_regions/index')?></li>
+</ul>
+<form id="deleteForm" action="<?php echo $html->url('/tandberg_regions/delete/' . $html->tagValue('TandbergRegion/id')); ?>" method="post">
+</form>
+

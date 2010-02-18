@@ -1,0 +1,438 @@
+
+<?php if(isset($output)): ?>
+<div style='border-style:collapse;border-width:thin;border-color:gray;'>
+<?php echo $output?>
+</div>
+<?php endif; ?>
+<h2><?php echo $project['Project']['name']?> Overview</h2>
+									<?php if(false): ?>
+									<table border="1" align="center" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+										<tr>
+										<td>Id</td>
+										<td>&nbsp;<?php echo $project['Project']['id']?></td>
+										</tr><tr>
+										<td>Name</td>
+										<td>&nbsp;<?php echo $project['Project']['name']?></td>
+										</tr><tr>
+										<td>State</td>
+										<td>&nbsp;<?php echo $html->link($project['State']['name'], '/states/view/' .$project['State']['id'])?></td>
+										</tr>
+										<tr>
+										<td>Region</td>
+										<td>&nbsp;<?php echo $html->link($project['TandbergRegion']['id'], '/tandberg_regions/view/' .$project['TandbergRegion']['id'])?></td>
+										</tr>
+										
+										<tr>
+										<td>Writer</td>
+										<td>
+										<?php foreach ($project['AppUser'] as $appUser):?>
+												<?php echo $html->link($appUser['last_name'], '/app_users/view/' . $appUser['id']);?>
+										<?php endforeach; ?>
+										
+										</td>
+										</tr>
+										
+										<tr>
+										<td>Leveraging Points</td>
+										<td>&nbsp;<?php echo $project['Project']['leveraging_points']?></td>
+										</tr><tr>
+										<td>Ez Ec Points</td>
+										<td>&nbsp;<?php echo $project['Project']['ez_ec_points']?></td>
+										</tr><tr>
+										<td>Score</td>
+										<td>&nbsp;<?php echo $project['Project']['score']?></td>
+										</tr>
+									</table>
+									<?php endif; ?>
+
+<?php if(true): ?>
+<table align="center" border="1" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr>
+	<th>Order</th>
+	<th>Site Name</th>
+	<th>Short name/Location</th>
+	<th>Address/Location</th>
+	<th>Location 2</th>
+	<th>Site Designation</th>
+	<th>County</th>
+	<th>School District</th>
+	<th>Congressional District</th>
+	<th>Census Designation</th>
+	<th>Census Population</th>
+	<th>Rurality Points</th>
+	<th>Total Students</th>
+	<th>% NSLP Eligible</th>
+	<!-- 
+	<th>NSLP Data Source</th>
+	<th>NSLP Data Source 2</th> -->
+	<th>Actions</th>
+</tr>
+<tbody id="sitesListTable">
+<?php foreach ($project['Site'] as $site): ?>
+<tr id="row_<?php echo $site['id']; ?>" >
+	<td >
+		<!--
+    <input type="button" onclick="return moveup(this.parentNode);" id="row_<?php echo $site['id']; ?>" value="Up"/><br/>
+		<input type="button" onclick="return movedown(this.parentNode);" id="row_<?php echo $site['id']; ?>" value="Down"/>
+		-->
+		<img  width="50px" height="1px" src='/img/transparent.gif' />
+    <img onmouseover="this.style.cursor='hand';" width="24px" height="14px" src='/img/up-btn.gif' onclick="return moveup(this.parentNode);" id="row_<?php echo $site['id']; ?>" alt="Move row up"/><img onmouseover="this.style.cursor='hand';" width="24px" height="14px" src='/img/down-btn.gif' onclick="return movedown(this.parentNode);" id="row_<?php echo $site['id']; ?>" alt="Move row down"/>
+		
+  </td>
+	<td><?php echo $site['site_name']; ?></td>
+	<td><?php echo $site['abbreviation']; ?></td>
+	<td><?php echo $site['site_address']; ?></td>
+	<td><?php echo $site['lon_lat']; ?></td>
+	<td><?php echo $site['SiteType']['cd']; ?></td>
+	<td><?php echo $site['county']; ?></td>
+	<td><?php echo $site['school_district']; ?></td>
+	<td><?php echo $site['congressional_district']; ?></td>
+	<td><?php echo $site['CensusDesignation']['cd']; ?></td>
+	<td><?php echo $site['rwf_census_population']; ?></td>
+	<td><?php echo $site['rurality_points']; ?></td>
+	<td><?php echo $site['nslpf_total_students']; ?></td>
+	<td><?php echo number_format($site['nslpf_perc_eligible'],2); ?></td>
+	<?php if(false): ?>
+	<td><?php echo $site['nslpf_source_data']; ?></td>
+	<td><?php echo $site['nslpf_source_data2']; ?></td>
+	<?php endif; ?>
+	<td class="actions">
+		<?php //echo $html->link('View','/sites/view/' . $site['id'])?>
+		<?php echo $html->link('Edit','/sites/edit/' . $site['id'])?>
+		<!-- 
+		<a href="#" 
+			onclick="<?php /*echo "if(confirm('Are you sure you want to delete Site id: ".$site['id']."')){ 
+  										document.getElementById('deleteForm".$site['id']."').submit(); 
+								 }" */?>">Delete</a>
+		<form id="deleteForm<?php //echo $site['id']?>" action="<?php //echo $html->url('/sites/delete/' . $site['id']); ?>" method="post"></form>
+		-->
+		<?php echo $html->link('Delete','/sites/delete/' . $site['id'], null, 'Are you sure you want to delete Site id: ' . $site['id']);?>
+		
+	</td>
+	
+</tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+
+<script>
+function sendUpdate()
+{
+  slt = $('sitesListTable');
+  s = '';
+  for(i=0; i<slt.childNodes.length; i++){
+    idstr = slt.childNodes[i].id;
+    idstr = idstr.replace(/.*?_/,'');
+  	s+='sitesListTable[]=' + idstr + '&';
+  }
+  new Ajax.Request("/Projects/order/" , {
+	method:"post", 
+	parameters:s + "projectId=" + <?php echo $project['Project']['id'] ?> ,
+	onSuccess: function(transport) {
+					//$('ta1').value=transport.responseText;
+					//$('div1').innerHTML=transport.responseText;
+//					trs = $('sitesListTable').childNodes;
+//					for(i=0; i<trs.length; i++){
+//						trs[i].id='row_' + i;
+//					}
+				},   
+	onError: function(transport) {
+					alert(transport);
+			}
+	});
+
+}
+//Sortable.create("sitesListTable", {tag:"tr", containment:["sitesListTable"],  onUpdate:sendUpdate});
+</script>
+
+<script>
+
+function cleanupNodeListForFireFox(){
+  tbody = $('sitesListTable');
+  for(i=0; i<tbody.childNodes.length; i++){
+  	tr = tbody.childNodes[i];
+  	if(tr.nodeType==3){
+  		tbody.removeChild(tr);
+  		i=i-1;
+  	}
+  }
+}
+
+cleanupNodeListForFireFox();
+
+function moveup(td){
+	tr = td.parentNode;
+	tbody = tr.parentNode;
+
+//	dumpObject(tbody.childNodes[0],'blah');
+
+  	if(tr.id == tbody.firstChild.id){
+  		alert('Row is already topmost in the list.');
+  	}else{
+  		for(i=0; i<tbody.childNodes.length; i++){
+  			if(tr.id == tbody.childNodes[i].id){
+  				tbody.removeChild(tr);
+  				tbody.insertBefore(tr,tbody.childNodes[i-1]);
+  			}
+  		}
+  	}
+  	
+  	sendUpdate();
+  	
+}
+
+
+
+function dumpObject(tr, div){
+	s = '<pre>';
+	for(e in tr){
+	 s += e + " " + eval('tr.' + e) + "\r\n";
+	}  
+	s += '</pre>';
+	$(div).innerHTML=s;
+}
+
+function movedown(td){
+	tr = td.parentNode;
+	tbody = tr.parentNode;
+
+//	dumpObject(tbody.childNodes[0],'blah');
+
+  	if(tr.id == tbody.lastChild.id){
+  		alert('Row is already bottom most in the list.');
+  	}else{
+  		for(i=0; i<tbody.childNodes.length; i++){
+  			if(tr.id == tbody.childNodes[i].id){
+  				tbody.removeChild(tr);
+  				if(i+1>=tbody.childNodes.length){
+  					tbody.appendChild(tr);
+  				}else{
+	  				tbody.insertBefore(tr,tbody.childNodes[i+1]);
+  				}
+  				i = tbody.childNodes.length+1;
+  			}
+  		}
+  	}
+  	
+  	sendUpdate();
+  	
+}
+</script>
+
+
+</div>
+
+<ul class="actions">
+	<li><?php echo $html->link('Add Site', '/sites/add/'.$project['Project']['id']); ?></li>
+	<li>Add Sites via Excel File Upload: <?php echo $html->link('Read Instructions', '/projects/upload_instructions', array("target"=>"_new")); ?> <?php echo $html->link('Download Template','/rus_sites_upload_template.xls') ?>
+		<p>
+		<form action="<?php echo $html->url('/projects/uploadSites/' . $project['Project']['id']); ?>" method="post" enctype="multipart/form-data">
+	Specify import file: <?php echo $html->file('datafileXLS'); ?><?php echo $html->submit('Upload'); ?>
+	</form>
+	   </p>
+	</li>
+	
+</ul>
+
+<div id="instructions">
+<p><strong><?php echo $html->link('Printing Instructions - Important!','/Projects/printingInstructions', array('target'=>'new')) ?></strong></p>
+<?php if(false): ?>
+										<ol>
+										  <li>Click the link for the worksheet </li>
+										  <li>Select &quot;Print Preview&quot; from your browser window</li>
+										  <li>Select the correct page orientation (portrait or landscape)</li>
+										  <li>Set margins at .25&quot; </li>
+										  <li>Remove the header/footer (<font color="#FF0000">very important</font>) </li>
+										  <li>Print. </li>
+										</ol>
+<?php endif; ?>
+</div>
+<div id="leftbox">
+<table cellspacing="0" cellpadding="4">
+  <tr>
+    <td align="right">Rurality points:</td>
+    <td align="right"><input type="hidden" id="rurality_points_hf" value="<?php echo $rurality_points; ?>" /><div id="rurality_points"></div></td>
+    <td>&nbsp;</td>
+    </tr>
+  <tr>
+    <td align="right">NSLP points: </td>
+    <td align="right"><input type="hidden" id="nslp_points_total_hf" value="<?php echo $nslp_points_total; ?>" /><div id="nslp_points_total"></div></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">Average NSLP Score: </td>
+    <td align="right"><input type="hidden" id="nslp_avg_hf" value="<?php echo $nslp_avg; ?>" /><div id="nslp_avg"></div></td>
+    <td>&nbsp;</td>
+  </tr>
+  <?php echo $ajax->form('/Projects/update','POST',
+  	array('update'=>'update_leveraging_points', 
+  		  'after'=>"$('update_leveraging_points').innerHTML='Saving...';",
+  		  'loaded'=>"updateCalculatedFields();")); ?>
+  <tr>
+    <td align="right">Leveraging points: </td>
+    <td><input name="leveraging_points" type="text" id="leveraging_points" size="2" 
+    	maxlength="2" value="<?php echo $project['Project']['leveraging_points'];?>" 
+    	onchange="if(!validateInteger(this.value)){ 
+    				alert('Not a valid number.'); 
+    				$('update_leveraging_points_button').disabled=true;
+    			  }else{ 
+    			  	$('update_leveraging_points_button').disabled=false;
+    			  }">
+    	<input name="id" type="hidden" id="id" value="<?php echo $project['Project']['id'];?>" ></td>
+    <td><input type="submit" value="Update" id="update_leveraging_points_button"/></td>
+    <td><div id="update_leveraging_points"></div></td>
+  </tr>
+  </form>
+  <?php echo $ajax->form('/Projects/update','POST',
+  	array('update'=>'update_ez_ec_points', 
+  		  'after'=>"$('update_ez_ec_points').innerHTML='Saving...';",
+  		  'loaded'=>"updateCalculatedFields();")); ?>
+  <tr>
+    <td align="right">EZ/EC points:</td>
+    <td><input name="ez_ec_points" type="text" id="ez_ec_points" size="2" 
+    	maxlength="2" value="<?php echo $project['Project']['ez_ec_points'];?>"  
+    	onchange="if(!validateInteger(this.value)){ 
+    				alert('Not a valid number.'); 
+    				$('update_ez_ec_points_button').disabled=true;
+    			  }else{ 
+    			  	$('update_ez_ec_points_button').disabled=false;
+    			  }"/></td>
+    <td><input type="submit" value="Update" id="update_ez_ec_points_button">
+    	<input name="id" type="hidden" id="id" value="<?php echo $project['Project']['id'];?>" /></td>
+    <td><div id="update_ez_ec_points"></div></td>
+  </tr>
+  </form>
+  <tr>
+    <td align="right">Objective score: </td>
+    <td><div id="objective_score"></div></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</div>
+<script type="text/javascript">
+function  validateNumeric( strValue ) {
+  var objRegExp  =  /(^-?\d\d*\.\d*$)|(^-?\d\d*$)|(^-?\.\d\d*$)/;
+
+  //check for numeric characters
+  return objRegExp.test(strValue);
+}
+function validateInteger( strValue ) {
+  var objRegExp  = /(^-?\d\d*$)/;
+
+  //check for integer characters
+  return objRegExp.test(strValue);
+}
+
+function roundNumber(num, dec) {
+	var result = Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
+	return result;
+}
+
+function updateCalculatedFields(){
+	try{
+		$('rurality_points').innerHTML = $('rurality_points_hf').value;
+		$('nslp_points_total').innerHTML = $('nslp_points_total_hf').value;
+		$('nslp_avg').innerHTML = $('nslp_avg_hf').value;
+		
+		obj_score = parseFloat($('rurality_points').innerHTML) + 
+										 parseFloat($('nslp_points_total').innerHTML) + 
+										 parseFloat($('leveraging_points').value) +
+										 parseFloat($('ez_ec_points').value);
+		$('objective_score').innerHTML = roundNumber(obj_score,2);
+	}catch(e){ alert(e); }
+}
+updateCalculatedFields();
+</script>
+
+<div id="printmenu">
+  <p><strong>View/print worksheets</strong></p>
+  <p><?php echo $html->link('Sites','/projects/sitesWorksheet/' . $project['Project']['id'], array("target"=>"_new")) ?></p>
+  <p>
+  <?php for($i=0; $i<$no_site_continuation_sheets; $i++): ?>
+  <?php 	if($i == 0): ?>
+  <?php 		echo $html->link('Sites continuation','/projects/sitesContinuation?id=' . $project['Project']['id'] . '&page=' . $i, array("target"=>"_new")) ?>
+  <?php 	else: ?>
+  <?php 		echo $html->link($i+1,'/projects/sitesContinuation?id=' . $project['Project']['id'] . '&page=' . $i, array("target"=>"_new")) ?>
+  <?php 	endif; ?>
+  &nbsp;
+  <?php endfor; ?>
+  </p>
+  <p><?php echo $html->link('Rurality','/projects/ruralityWorksheet/' . $project['Project']['id'], array("target"=>"_new")) ?></p>
+  <p>
+  <?php for($i=0; $i<$no_rurality_continuation_sheets; $i++): ?>
+  <?php 	if($i == 0): ?>
+  <?php 		echo $html->link('Rurality continuation','/projects/ruralityContinuation?id=' . $project['Project']['id'] . '&page=' . $i, array("target"=>"_new")) ?>
+  <?php 	else: ?>
+  <?php 		echo $html->link($i+1,'/projects/ruralityContinuation?id=' . $project['Project']['id'] . '&page=' . $i, array("target"=>"_new")) ?>
+  <?php 	endif; ?>
+  &nbsp;
+  <?php endfor; ?>
+  </p>
+  <p><?php echo $html->link('NSLP','/projects/nslpWorksheet/' . $project['Project']['id'], array("target"=>"_new")) ?></p>
+  <p>
+  <?php for($i=0; $i<$no_nslp_continuation_sheets; $i++): ?>
+  <?php 	if($i == 0): ?>
+  <?php 		echo $html->link('NSLP continuation','/projects/nslpContinuation?id=' . $project['Project']['id'] . '&page=' . $i, array("target"=>"_new")) ?>
+  <?php 	else: ?>
+  <?php 		echo $html->link($i+1,'/projects/nslpContinuation?id=' . $project['Project']['id'] . '&page=' . $i, array("target"=>"_new")) ?>
+  <?php 	endif; ?>
+  &nbsp;
+  <?php endfor; ?>
+  </p>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<form id="deleteProjectForm" action="<?php echo $html->url('/projects/delete/' . $project['Project']['id']); ?>" method="post">
+</form>
+
+						<?php if(false): ?>
+						<ul class="actions">
+							<li><?php echo $html->link('Edit Project',   '/projects/edit/' . $project['Project']['id']) ?> </li>
+							<li><a href="#" 
+									onclick="<?php echo "if(confirm('Are you sure you want to delete Project id: ".$project['Project']['id']."')){ 
+						  										document.getElementById('deleteProjectForm').submit(); 
+														 }" ?>">Delete Project</a></li>
+							<li><?php echo $html->link('List Projects',   '/projects/index') ?> </li>
+							<li><?php echo $html->link('New Project',	'/projects/add') ?> </li>
+							<?php if(false): ?>
+								<li><?php echo $html->link('List Tandberg Region', '/tandberg_regions/index/')?> </li>
+								<li><?php echo $html->link('New Tandberg Region', '/tandberg_regions/add/')?> </li>
+							<?php endif; ?>
+						</ul>
+						<?php endif; ?>
+
+<?php endif; ?>
+
+
+
+						<?php if(false): ?>
+						<div class="related" >
+						<h3>Related App Users</h3>
+						<?php if (false && !empty($project['AppUser'])):?>
+						<table cellpadding="0" cellspacing="0">
+						<tr>
+						<?php foreach ($project['AppUser']['0'] as $column => $value): ?>
+						<th><?php echo $column?></th>
+						<?php endforeach; ?>
+						<th>Actions</th>
+						</tr>
+						<?php foreach ($project['AppUser'] as $appUser):?>
+						<tr>
+							<?php foreach ($appUser as $column => $value):?>
+								<td><?php echo $value;?></td>
+							<?php endforeach;?>
+							<td class="actions">
+								<?php echo $html->link('View', '/app_users/view/' . $appUser['id']);?>
+								<?php echo $html->link('Edit', '/app_users/edit/' . $appUser['id']);?>
+								<?php echo $html->link('Delete', '/app_users/delete/' . $appUser['id'], null, 'Are you sure you want to delete: id ' . $appUser['id'] . '?');?>
+							</td>
+						</tr>
+						<?php endforeach; ?>
+						</table>
+						<?php endif; ?>
+						
+						<ul class="actions">
+							<li><?php echo $html->link('New App User', '/app_users/add/');?> </li>
+						</ul>
+						</div>
+						<?endif; ?>

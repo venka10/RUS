@@ -1,0 +1,67 @@
+<?php
+class Project extends AppModel {
+
+	var $name = 'Project';
+	var $validate = array(
+		'id' => VALID_NOT_EMPTY,
+		'states_id' => VALID_NOT_EMPTY,
+		'tandberg_regions_id' => VALID_NOT_EMPTY
+	);
+	var $recursive = 1;
+	
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
+	var $belongsTo = array(
+			'State' =>
+				array('className' => 'State',
+						'foreignKey' => 'states_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'counterCache' => ''
+				),
+
+			'TandbergRegion' =>
+				array('className' => 'TandbergRegion',
+						'foreignKey' => 'tandberg_regions_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'counterCache' => ''
+				),
+
+	);
+
+	var $hasAndBelongsToMany = array(
+			'AppUser' =>
+				array('className' => 'AppUser',
+						'joinTable' => 'app_users_projects',
+						'foreignKey' => 'project_id',
+						'associationForeignKey' => 'app_user_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'limit' => '',
+						'offset' => '',
+						'unique' => '',
+						'finderQuery' => '',
+						'deleteQuery' => '',
+						'insertQuery' => ''
+				),
+
+	);
+
+	function beforeSave(){
+		if($this->data['Project']['leveraging_points'] == ''){
+			$this->data['Project']['leveraging_points'] = 0;	
+		}
+		if($this->data['Project']['ez_ec_points'] == ''){
+			$this->data['Project']['ez_ec_points'] = 0;	
+		}
+		if($this->data['Project']['score'] == ''){
+			$this->data['Project']['score'] = 0;	
+		}
+		return true;
+	}
+	
+}
+?>

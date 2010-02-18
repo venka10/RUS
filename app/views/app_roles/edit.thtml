@@ -1,0 +1,25 @@
+<h2>Edit Role</h2>
+<form action="<?php echo $html->url('/app_roles/edit/'.$html->tagValue('AppRole/id')); ?>" method="post">
+<table border="1" align="center" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr><td> 
+	<?php echo $form->labelTag('AppRole/name', 'Name');?>
+ 	</td><td>
+ 	<?php echo $html->input('AppRole/name', array('size' => '60', 'disabled'=>'true'));?>
+	<?php echo $html->tagErrorMsg('AppRole/name', 'Please enter the Name.');?>
+</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('AppRole/description', 'Description');?>
+ 	</td><td>
+ 	<?php echo $html->input('AppRole/description', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AppRole/description', 'Please enter the Description.');?>
+</td></tr>
+<?php echo $html->hidden('AppRole/id')?>
+<tr><td colspan="2">
+	<?php echo $html->submit('Save');?>
+</td></tr>
+</table>
+</form>
+<ul class="actions">
+<!-- li><?php //echo $html->link('Delete','/app_roles/delete/' . $html->tagValue('AppRole/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('AppRole/id'));?></li -->
+<li><?php echo $html->link('List App Roles', '/app_roles/index')?></li>
+</ul>

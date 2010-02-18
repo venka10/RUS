@@ -1,0 +1,16 @@
+<h1>Add Post</h1>
+<form method="post" action="<?php echo $html->url('/posts/add')?>">
+    <p>
+        Title:
+        <?php echo $html->input('Post/title', array('size' => '40'))?>
+        <?php echo $html->tagErrorMsg('Post/title', 'Title is required.') ?>
+    </p>
+    <p>
+        Body:
+        <?php echo $html->textarea('Post/body', array('rows'=>'10')) ?>
+        <?php echo $html->tagErrorMsg('Post/body', 'Body is required.') ?>
+    </p>
+    <p>
+        <?php echo $html->submit('Save') ?>
+    </p>
+</form>

@@ -1,0 +1,21 @@
+<h2>New Application Role</h2>
+<form action="<?php echo $html->url('/app_roles/add'); ?>" method="post">
+<table border="1" align="center" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr><td>
+	<?php echo $form->labelTag('AppRole/name', 'Name');?>
+ 	</td><td><?php echo $html->input('AppRole/name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AppRole/name', 'Please enter the Name.');?>
+</td></tr>
+<tr><td> 
+	<?php echo $form->labelTag('AppRole/description', 'Description');?>
+ 	</td><td><?php echo $html->input('AppRole/description', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AppRole/description', 'Please enter the Description.');?>
+</td></tr>
+<tr><td colspan="2">
+	<?php echo $html->submit('Add');?>
+</td></tr>
+</table>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List App Roles', '/app_roles/index')?></li>
+</ul>

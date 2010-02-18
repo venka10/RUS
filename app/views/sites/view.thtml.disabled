@@ -1,0 +1,63 @@
+<div class="site">
+<h2>View Site</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $site['Site']['id']?></dd>
+	<dt>Projects</dt>
+	<dd>&nbsp;<?php echo $html->link($site['Project']['name'], '/projects/view/' .$site['Project']['id'])?></dd>
+	<dt>Census Designations</dt>
+	<dd>&nbsp;<?php echo $html->link($site['CensusDesignation']['id'], '/census_designations/view/' .$site['CensusDesignation']['id'])?></dd>
+	<dt>Site Types</dt>
+	<dd>&nbsp;<?php echo $html->link($site['SiteType']['id'], '/site_types/view/' .$site['SiteType']['id'])?></dd>
+	<dt>Site Name</dt>
+	<dd>&nbsp;<?php echo $site['Site']['site_name']?></dd>
+	<dt>Site Address</dt>
+	<dd>&nbsp;<?php echo $site['Site']['site_address']?></dd>
+	<dt>County</dt>
+	<dd>&nbsp;<?php echo $site['Site']['county']?></dd>
+	<dt>School District</dt>
+	<dd>&nbsp;<?php echo $site['Site']['school_district']?></dd>
+	<dt>Congressional District</dt>
+	<dd>&nbsp;<?php echo $site['Site']['congressional_district']?></dd>
+	<dt>Rwf Census Population</dt>
+	<dd>&nbsp;<?php echo $site['Site']['rwf_census_population']?></dd>
+	<dt>Rwf Rurality Points</dt>
+	<dd>&nbsp;<?php echo $site['Site']['rwf_rurality_points']?></dd>
+	<dt>Nslpf Total Students</dt>
+	<dd>&nbsp;<?php echo $site['Site']['nslpf_total_students']?></dd>
+	<dt>Nslpf Perc Eligible</dt>
+	<dd>&nbsp;<?php echo $site['Site']['nslpf_perc_eligible']?></dd>
+	<dt>Nslpf Source Data</dt>
+	<dd>&nbsp;<?php echo $site['Site']['nslpf_source_data']?></dd>
+	<dt>Rwn Population In Service</dt>
+	<dd>&nbsp;<?php echo $site['Site']['rwn_population_in_service']?></dd>
+	<dt>Rwn Rurality Points</dt>
+	<dd>&nbsp;<?php echo $site['Site']['rwn_rurality_points']?></dd>
+	<dt>Rwn Product</dt>
+	<dd>&nbsp;<?php echo $site['Site']['rwn_product']?></dd>
+	<dt>Nslpn Total Students</dt>
+	<dd>&nbsp;<?php echo $site['Site']['nslpn_total_students']?></dd>
+	<dt>Nslpn Perc Eligible</dt>
+	<dd>&nbsp;<?php echo $site['Site']['nslpn_perc_eligible']?></dd>
+	<dt>Nslpn Source Data2</dt>
+	<dd>&nbsp;<?php echo $site['Site']['nslpn_source_data2']?></dd>
+	<dt>Nslp Url</dt>
+	<dd>&nbsp;<?php echo $site['Site']['nslp_url']?></dd>
+	<dt>Lon Lat</dt>
+	<dd>&nbsp;<?php echo $site['Site']['lon_lat']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Site',   '/sites/edit/' . $site['Site']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Site', '/sites/delete/' . $site['Site']['id'], null, 'Are you sure you want to delete: id ' . $site['Site']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Sites',   '/sites/index') ?> </li>
+	<li><?php echo $html->link('New Site',	'/sites/add') ?> </li>
+	<li><?php echo $html->link('List Project', '/projects/index/')?> </li>
+	<li><?php echo $html->link('New Projects', '/projects/add/')?> </li>
+	<li><?php echo $html->link('List Census Designation', '/census_designations/index/')?> </li>
+	<li><?php echo $html->link('New Census Designations', '/census_designations/add/')?> </li>
+	<li><?php echo $html->link('List Site Type', '/site_types/index/')?> </li>
+	<li><?php echo $html->link('New Site Types', '/site_types/add/')?> </li>
+</ul>
+
+</div>

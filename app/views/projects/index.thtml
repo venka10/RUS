@@ -1,0 +1,80 @@
+<div id="content" class="projects">
+<h2>Projects</h2>
+<?php if ($session->read('AppRole_name') == 'SuperAdmin'  || $session->read('AppRole_name') == 'Regional Mgr'): ?>
+<p align="right"><strong><?php echo $html->link('View Archived Projects', '/Projects/archived');?></strong>
+<strong><?php echo $html->link('Administer Users', '/AppUsers');?></strong></p>
+<?php endif; ?>
+<table align="center" border="1" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<?php
+$pagination->setPaging($paging); 
+$th = array(
+	"",
+	$pagination->sortBy('name','Project','Project'),
+	$pagination->sortBy('name','Region','TandbergRegion'),
+	$pagination->sortBy('name','State','State'),
+	$pagination->sortBy('last_name','Writer','AppUser'),
+	"" 
+);
+/*
+<tr>
+	<!-- >th>Id</th  -->
+	<th>&nbsp;</th>
+	<th>Project</th>
+	<th>Region</th>
+	<th>State</th>
+	<th>Writer</th>
+	<th>&nbsp;</th>
+</tr>
+*/
+echo $html->tableHeaders($th);
+?>
+
+<?php foreach ($data as $project): ?>
+<tr>
+	<!-- >td>< ? php //echo $project['Project']['id']; ?></td -->
+	<td><?php echo $html->link('Select','/projects/view/' . $project['Project']['id'] . '?cache=' . rand(0,9999999999))?></td>
+	<td><?php echo $project['Project']['name']; ?></td>
+	<td>&nbsp;<?php if(isset($project['TandbergRegion']['name'])) { echo $project['TandbergRegion']['name']; } else { echo $project['Project']['TandbergRegion']['name']; }?></td>
+	<td>&nbsp;<?php if(isset($project['State']['name'])){ echo $project['State']['name']; } else { echo $project['Project']['State']['name']; }?></td>
+	<td>&nbsp;
+		<?php 
+			if(isset($project['AppUsersProject'])){
+				echo $project['AppUser']['last_name'];					
+			}else{
+				foreach ($project['AppUser'] as $appUser):
+					echo $appUser['last_name'];
+				endforeach;
+			} ?>
+	</td>
+	<td class="actions">
+		<?php echo $html->link('Edit','/projects/edit/' . $project['Project']['id'])?>
+		<?php //echo $html->link('Delete','/projects/delete/' . $project['Project']['id'], null, 'Are you sure you want to delete id ' . $project['Project']['id'])?>
+		<?php if ($session->read('AppRole_name') == 'SuperAdmin' || $session->read('AppRole_name') == 'Regional Mgr'): ?>
+			<!--  <a href="#" onclick="<?php //echo "if(confirm('Are you sure you want to delete id ".$project['Project']['id']."')){ document.getElementById('deleteForm".$project['Project']['id']."').submit(); }" ?>">Delete</a>  -->	
+			<?php echo $html->link('Delete','/projects/delete/' . $project['Project']['id'], null, 'Are you sure you want to delete: id ' . $project['Project']['id']);?>
+		<?php endif; ?>
+		<?php if ($session->read('AppRole_name') == 'SuperAdmin'): ?>
+			<?php echo $html->link('Hide', '/projects/hide/' . $project['Project']['id']);?>
+		<?php endif; ?>
+	</td>
+	<form id="<?php echo "deleteForm".$project['Project']['id']?>" action="<?php echo $html->url('/projects/delete/' . $project['Project']['id']); ?>" method="post"></form>
+	
+</tr>
+<?php endforeach; ?>
+<tr>
+	<!-- >td>Id</td  -->
+	<td>&nbsp;</td>
+	<td>&nbsp;
+	<?php if ($session->read('AppRole_name') == 'SuperAdmin' || $session->read('AppRole_name') == 'Regional Mgr'): ?>
+		<?php echo $html->link('New Project', '/projects/add'); ?>
+	<?php endif; ?>
+	</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<? //echo $this->renderElement('pagination'); // Render the pagination element ?> 
+</div>

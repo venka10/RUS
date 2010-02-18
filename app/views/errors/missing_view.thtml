@@ -1,0 +1,1 @@
+<p>The page you requested could not be found. Please click <?php echo $html->link('here','/'); ?> to go to the homepage.</p>

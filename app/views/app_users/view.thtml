@@ -1,0 +1,87 @@
+<div class="appUser">
+<h2>View User</h2>
+
+<table border="1" align="center" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+	<tr>	
+		<td>Id</td>
+		<td>&nbsp;<?php echo $appUser['AppUser']['id']?></td>
+	</tr>
+	<tr>
+		<td>First Name</td>
+		<td>&nbsp;<?php echo $appUser['AppUser']['first_name']?></td>
+	</tr>
+	<tr>
+		<td>Last Name</td>
+		<td>&nbsp;<?php echo $appUser['AppUser']['last_name']?></td>
+	</tr>
+	<tr>
+		<td>User Name</td>
+		<td>&nbsp;<?php echo $appUser['AppUser']['user_name']?></td>
+	</tr>
+	<tr>
+		<td>Role</td>
+		<td>&nbsp;<?php echo $appUser['AppRole']['name']?></td>
+	</tr>
+	<?php if(false): ?>
+	<tr>
+		<td>Tandberg Region</td>
+		<td>&nbsp;<?php echo $appUser['TandbergRegion']['name']?></td>
+	</tr>
+	<?php endif; ?>
+	<tr>
+		<td>
+		<?php echo $html->link('Edit','/app_users/edit/' . $appUser['AppUser']['id'])?>
+		</td>
+		<?php if($appUser['AppUser']['id'] != 1 && $session->read('AppRole_name') == 'SuperAdmin'): ?>
+			<form id="deleteForm" action="<?php echo $html->url('/app_users/delete/'.$appUser['AppUser']['id']); ?>" method="post">
+			</form>
+			<td>
+			<a href="#" 
+				onclick="<?php echo "if(confirm('Are you sure you want to delete id ".$appUser['AppUser']['id']."')){ document.getElementById('deleteForm').submit(); }" ?>">Delete</a></td>
+		<?php endif; ?>
+	</tr>
+</table>
+<ul class="actions">
+	
+	<li><?php echo $html->link('List Users',   '/app_users/index') ?> </li>
+	<li><?php echo $html->link('New User',	'/app_users/add') ?> </li>
+	<?php if(false): ?>
+	<li><?php echo $html->link('List Tandberg Regions', '/tandberg_regions/index/')?> </li>
+	<li><?php echo $html->link('New Tandberg Region', '/tandberg_regions/add/')?> </li>
+	<li><?php echo $html->link('List Roles', '/app_roles/index/')?> </li>
+	<li><?php echo $html->link('New Role', '/app_roles/add/')?> </li>
+	<?endif; ?>
+</ul>
+
+</div>
+<?php if (false && !empty($appUser['Project'])):?>
+<div class="related">
+<h3>Related Projects</h3>
+
+<table align="center" border="1" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr>
+<?php foreach ($appUser['Project']['0'] as $column => $value): ?>
+<th><?php echo $column?></th>
+<?php endforeach; ?>
+<th>Actions</th>
+</tr>
+<?php foreach ($appUser['Project'] as $project):?>
+<tr>
+	<?php foreach ($project as $column => $value):?>
+		<td><?php echo $value;?></td>
+	<?php endforeach;?>
+	<td class="actions">
+		<?php echo $html->link('View', '/projects/view/' . $project['id']);?>
+		<?php echo $html->link('Edit', '/projects/edit/' . $project['id']);?>
+		<?php echo $html->link('Delete', '/projects/delete/' . $project['id'], null, 'Are you sure you want to delete: id ' . $project['id'] . '?');?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+
+<ul class="actions">
+	<li><?php echo $html->link('New Project', '/projects/add/');?> </li>
+</ul>
+</div>
+<?php endif; ?>

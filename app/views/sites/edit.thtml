@@ -1,0 +1,188 @@
+<h2>Edit Site</h2>
+
+<form action="<?php echo $html->url('/sites/edit/'.$html->tagvalue('Site/id')); ?>" method="post">
+<table border="1" align="center" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr><td>
+	<?php //pr($project); ?>
+	<?php echo $form->labelTag('Site/projects_id', 'Project');?>
+ 	<?php //echo $html->selectTag('Site/projects_id', $projects, $html->tagValue('Site/projects_id'), array(), array(), false);?>
+	<?php //echo $html->input('Site/projects_id', array('disabled'=>'true'));?>
+	</td><td>
+	<?php echo $html->hidden('Site/projects_id');?>
+	<?php echo $html->link($project['Project']['name'],'/projects/view/'.$html->tagValue('Site/projects_id'));?>
+	<?php echo $html->tagErrorMsg('Site/projects_id', 'Please select the Projects.') ?>
+</td><td>&nbsp;</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('Site/site_name', 'Site Name');?>
+	</td><td>
+ 	<?php echo $html->input('Site/site_name', array('maxlength' => '62'));?>
+	<?php echo $html->tagErrorMsg('Site/site_name', 'Please enter the Site Name.');?>
+</td><td>Line 1 of Sites worksheet. If abbreviating below, show in parentheses here.</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('Site/abbreviation', 'Rurality name (census unit)');?>
+	</td><td>
+ 	<?php echo $html->input('Site/abbreviation', array('maxlength' => '62'));?>
+	<?php echo $html->tagErrorMsg('Site/abbreviation', 'Please enter the Rurality name (census unit).');?>
+</td><td>See example on p50 of Guidelines</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('Site/site_address', 'Address/Location');?>
+	</td><td>
+ 	<?php echo $html->input('Site/site_address', array('maxlength' => '62'));?>
+	<?php echo $html->tagErrorMsg('Site/site_address', 'Please enter the Site Address.');?>
+</td><td>Appears on line 2 of Sites worksheet</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('Site/lon_lat', 'Location 2');?>
+	</td><td>
+ 	<?php echo $html->input('Site/lon_lat', array('maxlength' => '62'));?>
+	<?php echo $html->tagErrorMsg('Site/lon_lat', 'Please enter the Location 2.');?>
+	</td>
+	<td>Optional third line of Sites worksheet. Latitude and longitude if needed at 
+		<?php echo $html->link('http://terraserver-usa.com/','http://terraserver-usa.com/', array('target' => '_new')); ?>
+	</td>
+</tr>
+<tr><td>
+	<?php echo $form->labelTag('Site/site_types_id', 'Designation');?>
+	</td><td>
+	
+ 	<?php echo $html->selectTag('Site/site_types_id', $siteTypes, $html->tagValue('Site/site_types_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Site/site_types_id', 'Please select a designation.') ?>
+</td><td>&nbsp;</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('Site/county', 'County');?>
+	</td><td>
+ 	<?php echo $html->input('Site/county', array('maxlength' => '24'));?>
+	<?php echo $html->tagErrorMsg('Site/county', 'Please enter the County.');?>
+</td><td>&nbsp;</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('Site/school_district', 'School District');?>
+	</td><td>
+ 	<?php echo $html->input('Site/school_district', array('maxlength' => '44'));?>
+	<?php echo $html->tagErrorMsg('Site/school_district', 'Please enter the School District.');?>
+</td><td>&nbsp;</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('Site/congressional_district', 'Congressional District');?>
+	</td><td>
+ 	<?php echo $html->input('Site/congressional_district', array('maxlength' => '32'));?>
+	<?php echo $html->tagErrorMsg('Site/congressional_district', 'Please enter the Congressional District.');?>
+	</td>
+	<td><?php echo $html->link('http://www.congressmerge.com/onlinedb/index.htm','http://www.congressmerge.com/onlinedb/index.htm',array('target'=>'_new')); ?></td>
+</tr>
+<tr><td>
+	<?php echo $form->labelTag('Site/census_designations_id', 'Census Designation');?>
+	</td><td>
+ 	<?php echo $html->selectTag('Site/census_designations_id', $censusDesignations, $html->tagValue('Site/census_designations_id'), array("onchange"=>"doCensusDesignation_OnChange(this);"), array(), false);?>
+	<?php echo $html->tagErrorMsg('Site/census_designations_id', 'Please select a Census Designation.') ?>
+	</td>	
+	<td><?php echo $html->link('http://factfinder.census.gov/servlet/ReferenceMapFramesetServlet?_bm=y&-ds_name=DEC_2000_SF1_U&-tree_id=420&-bucket_id=50&-_caller=dataset&-_lang=en',
+								'http://factfinder.census.gov/servlet/ReferenceMapFramesetServlet?_bm=y&-ds_name=DEC_2000_SF1_U&-tree_id=420&-bucket_id=50&-_caller=dataset&-_lang=en',
+								array('target'=>'_new')); ?>
+	</td>
+</tr>
+<tr><td>
+	<?php echo $form->labelTag('Site/rwf_census_population', 'Census Population');?>
+	</td><td>
+ 	<?php echo $html->input('Site/rwf_census_population', array());?>
+	<?php echo $html->tagErrorMsg('Site/rwf_census_population', 'Please enter a valid number.');?>
+</td><td></td></tr>
+<?php if(false): ?>
+<?php //I don't think we need this here for now -Venka ?>
+<tr><td>
+	<?php echo $form->labelTag('Site/rurality_points', 'Rurality Points');?>
+	</td><td>
+ 	<?php echo $html->hidden('Site/rurality_points');?>
+ 	<p><?php echo $html->tagValue('Site/rurality_points'); ?></p>
+	<?php echo $html->tagErrorMsg('Site/rurality_points', 'Please enter the Rurality Points.');?>
+</td><td>&nbsp;</td></tr>
+<?endif; ?>
+<tr><td>
+	<?php echo $form->labelTag('Site/nslpf_total_students', 'Total Students');?>
+	</td><td>
+ 	<?php echo $html->input('Site/nslpf_total_students', array());?>
+	<?php echo $html->tagErrorMsg('Site/nslpf_total_students', 'Please enter the Total Students.');?>
+</td><td>&nbsp;</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('Site/nslpf_perc_eligible', '% NSLP Eligible');?>
+	</td><td>
+ 	<?php echo $html->input('Site/nslpf_perc_eligible', array('maxlength' => '5'));?>%
+	<?php echo $html->tagErrorMsg('Site/nslpf_perc_eligible', 'Please enter the % NSLP Eligible.');?>
+</td><td>Enter up to 2 decimal places</td></tr>
+<?php if(false): ?>
+		<tr><td>
+			<?php echo $form->labelTag('Site/nslpf_source_data', 'NSLP Data Source');?>
+			</td><td>
+		 	<?php echo $html->input('Site/nslpf_source_data', array('maxlength' => '29'));?>
+			<?php echo $html->tagErrorMsg('Site/nslpf_source_data', 'Please enter the NSLP Data Source.');?>
+		</td><td>If necessary, break url into two lines. Length limit 29 characters per line.</td></tr>
+		<tr><td>
+			<?php echo $form->labelTag('Site/nslpf_source_data2', 'NSLP Source Data 2');?>
+			</td><td>
+		 	<?php echo $html->input('Site/nslpf_source_data2', array('maxlength' => '29'));?>
+			<?php /* echo $html->tagErrorMsg('Site/nslpf_source_data2', 'Please enter the NSLP Source Data 2.'); */?>
+		</td><td>&nbsp;</td></tr>
+		
+		<tr><td>
+			<?php echo $form->labelTag('Site/rwn_population_in_service', 'Rwn Population In Service');?>
+			</td><td>
+		 	<?php echo $html->input('Site/rwn_population_in_service', array('size' => '60'));?>
+			<?php echo $html->tagErrorMsg('Site/rwn_population_in_service', 'Please enter the Rwn Population In Service.');?>
+		</td><td>&nbsp;</td></tr>
+		<tr><td>
+			<?php echo $form->labelTag('Site/rwn_rurality_points', 'Rwn Rurality Points');?>
+			</td><td>
+		 	<?php echo $html->input('Site/rwn_rurality_points', array('size' => '60'));?>
+			<?php echo $html->tagErrorMsg('Site/rwn_rurality_points', 'Please enter the Rwn Rurality Points.');?>
+		</td><td>&nbsp;</td></tr>
+		<tr><td>
+			<?php echo $form->labelTag('Site/rwn_product', 'Rwn Product');?>
+			</td><td>
+		 	<?php echo $html->input('Site/rwn_product', array('size' => '60'));?>
+			<?php echo $html->tagErrorMsg('Site/rwn_product', 'Please enter the Rwn Product.');?>
+		</td><td>&nbsp;</td></tr>
+		<tr><td>
+			<?php echo $form->labelTag('Site/nslpn_total_students', 'Nslpn Total Students');?>
+			</td><td>
+		 	<?php echo $html->input('Site/nslpn_total_students', array('size' => '60'));?>
+			<?php echo $html->tagErrorMsg('Site/nslpn_total_students', 'Please enter the Nslpn Total Students.');?>
+		</td><td>&nbsp;</td></tr>
+		<tr><td>
+			<?php echo $form->labelTag('Site/nslpn_perc_eligible', 'Nslpn Perc Eligible');?>
+			</td><td>
+		 	<?php echo $html->input('Site/nslpn_perc_eligible', array('size' => '60'));?>
+			<?php echo $html->tagErrorMsg('Site/nslpn_perc_eligible', 'Please enter the Nslpn Perc Eligible.');?>
+		</td><td>&nbsp;</td></tr>
+		<tr><td>
+			<?php echo $form->labelTag('Site/nslp_url', 'Nslp Url');?>
+			</td><td>
+		 	<?php echo $html->input('Site/nslp_url', array('size' => '60'));?>
+			<?php echo $html->tagErrorMsg('Site/nslp_url', 'Please enter the Nslp Url.');?>
+		</td><td>&nbsp;</td></tr>
+<?php endif; ?>
+<?php echo $html->hidden('Site/id')?>
+<tr><td>&nbsp;</td>
+	<td><?php echo $html->submit('Save', array("onclick"=>"return checkForEmptyValues();"));?><input type="button" name="Cancel" value="Cancel" onclick="history.go(-1);" /></td>
+	<td>&nbsp;</td></tr>
+</table>
+<p>Abbreviation, if provided, will be inserted in top line of Site worksheet between parentheses.</p>
+</form>
+<ul class="actions">
+<?php if(false): ?>
+								<li><?php echo $html->link('View Project', '/projects/view/'.$html->tagValue('Site/projects_id'));?></li>
+								<li><?php echo $html->link('List Sites', '/sites/index')?></li>
+								<li><?php echo $html->link('Add Projects', '/projects/add/');?></li>
+								<li><?php echo $html->link('View Census Designations', '/census_designations/index/');?></li>
+								<li><?php echo $html->link('Add Census Designations', '/census_designations/add/');?></li>
+								<li><?php echo $html->link('View Site Types', '/site_types/index/');?></li>
+								<li><?php echo $html->link('Add Site Types', '/site_types/add/');?></li>
+<?php endif; ?>
+</ul>
+
+<script type="text/javascript">
+function doCensusDesignation_OnChange(t){
+	if(t.options[t.selectedIndex].text=='Census Rural'){
+		document.getElementById('SiteRwfCensusPopulation').disabled=true;
+	}else{
+		document.getElementById('SiteRwfCensusPopulation').disabled=false;
+	}
+}
+doCensusDesignation_OnChange(document.getElementById('SiteCensusDesignationsId'));
+</script>

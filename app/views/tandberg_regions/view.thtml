@@ -1,0 +1,21 @@
+<div class="tandbergRegion">
+<h2>View Tandberg Region</h2>
+<table border="1" align="center" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+	<tr>
+	<td>Id</td>
+	<td>&nbsp;<?php echo $tandbergRegion['TandbergRegion']['id']?></td>
+	</tr><tr>
+	<td>Name</td>
+	<td>&nbsp;<?php echo $tandbergRegion['TandbergRegion']['name']?></td>
+</tr>
+</table>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Tandberg Region',   '/tandberg_regions/edit/' . $tandbergRegion['TandbergRegion']['id']) ?> </li>
+	<li><a href="#" onclick="<?php echo "if(confirm('Are you sure you want to delete: id " . $tandbergRegion['TandbergRegion']['id'] . "?')){ document.getElementById('deleteForm').submit(); }" ?>">Delete Tandberg Region</a>
+	<li><?php echo $html->link('List Tandberg Regions',   '/tandberg_regions/index') ?> </li>
+	<li><?php echo $html->link('New Tandberg Region',	'/tandberg_regions/add') ?> </li>
+</ul>
+
+</div>
+<form id="deleteForm" action="<?php echo '/tandberg_regions/delete/' . $tandbergRegion['TandbergRegion']['id']; ?>" method="post"></form>
+	

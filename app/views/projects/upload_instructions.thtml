@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Upload Instructions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	margin:20px;
+	padding:0;
+	width:600px;
+}
+</style>
+</head>
+
+<body>
+<h2>Uploading Sites data... </h2>
+<p>Instructions & Notes:
+		<ol>
+			<li>Excel files upto version 2003 are supported.  If you have a later version, you must save the file as an Excel 2003 version before uploading.</li>
+			<li>Only the first sheet will be read if it is a multisheet workbook.</li>
+			<li>The use of this template is required: <?php echo $html->link('import data template','/rus_sites_upload_template.xls') ?>.  Do not alter the column headings in the first row, they are required for correct data loading.</li>
+			<li>Working in Excel, you can reorder the columns if you like, but if you edit or delete a column header, that data will not be imported. </li>
+			<li>You can reorder and edit the sites online after you upload.</li>
+			<li>If you upload the file a second time, previously entered sites are not changed. Rather, new rows are appended.</li>
+			 
+			
+		</ol>
+		</p>
+</body>
+</html>

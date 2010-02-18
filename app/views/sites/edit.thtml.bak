@@ -1,0 +1,122 @@
+<h2>Edit Site</h2>
+<form action="<?php echo $html->url('/sites/edit/'.$html->tagValue('Site/id')); ?>" method="post">
+<div class="required"> 
+	<?php echo $form->labelTag('Site/projects_id', 'Projects');?>
+ 	<?php echo $html->selectTag('Site/projects_id', $projects, $html->tagValue('Site/projects_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Site/projects_id', 'Please select the Projects.') ?>
+</div>
+<div class="required"> 
+	<?php echo $form->labelTag('Site/census_designations_id', 'Census Designations');?>
+ 	<?php echo $html->selectTag('Site/census_designations_id', $censusDesignations, $html->tagValue('Site/census_designations_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Site/census_designations_id', 'Please select the Census Designations.') ?>
+</div>
+<div class="required"> 
+	<?php echo $form->labelTag('Site/site_types_id', 'Site Types');?>
+ 	<?php echo $html->selectTag('Site/site_types_id', $siteTypes, $html->tagValue('Site/site_types_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Site/site_types_id', 'Please select the Site Types.') ?>
+</div>
+<div class="required"> 
+	<?php echo $form->labelTag('Site/site_name', 'Site Name');?>
+ 	<?php echo $html->input('Site/site_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/site_name', 'Please enter the Site Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/site_address', 'Site Address');?>
+ 	<?php echo $html->input('Site/site_address', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/site_address', 'Please enter the Site Address.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/county', 'County');?>
+ 	<?php echo $html->input('Site/county', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/county', 'Please enter the County.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/school_district', 'School District');?>
+ 	<?php echo $html->input('Site/school_district', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/school_district', 'Please enter the School District.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/congressional_district', 'Congressional District');?>
+ 	<?php echo $html->input('Site/congressional_district', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/congressional_district', 'Please enter the Congressional District.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/rwf_census_population', 'Rwf Census Population');?>
+ 	<?php echo $html->input('Site/rwf_census_population', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/rwf_census_population', 'Please enter the Rwf Census Population.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/rwf_rurality_points', 'Rwf Rurality Points');?>
+ 	<?php echo $html->input('Site/rwf_rurality_points', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/rwf_rurality_points', 'Please enter the Rwf Rurality Points.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/nslpf_total_students', 'Nslpf Total Students');?>
+ 	<?php echo $html->input('Site/nslpf_total_students', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/nslpf_total_students', 'Please enter the Nslpf Total Students.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/nslpf_perc_eligible', 'Nslpf Perc Eligible');?>
+ 	<?php echo $html->input('Site/nslpf_perc_eligible', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/nslpf_perc_eligible', 'Please enter the Nslpf Perc Eligible.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/nslpf_source_data', 'Nslpf Source Data');?>
+ 	<?php echo $html->input('Site/nslpf_source_data', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/nslpf_source_data', 'Please enter the Nslpf Source Data.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/rwn_population_in_service', 'Rwn Population In Service');?>
+ 	<?php echo $html->input('Site/rwn_population_in_service', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/rwn_population_in_service', 'Please enter the Rwn Population In Service.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/rwn_rurality_points', 'Rwn Rurality Points');?>
+ 	<?php echo $html->input('Site/rwn_rurality_points', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/rwn_rurality_points', 'Please enter the Rwn Rurality Points.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/rwn_product', 'Rwn Product');?>
+ 	<?php echo $html->input('Site/rwn_product', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/rwn_product', 'Please enter the Rwn Product.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/nslpn_total_students', 'Nslpn Total Students');?>
+ 	<?php echo $html->input('Site/nslpn_total_students', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/nslpn_total_students', 'Please enter the Nslpn Total Students.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/nslpn_perc_eligible', 'Nslpn Perc Eligible');?>
+ 	<?php echo $html->input('Site/nslpn_perc_eligible', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/nslpn_perc_eligible', 'Please enter the Nslpn Perc Eligible.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/nslpn_source_data2', 'Nslpn Source Data2');?>
+ 	<?php echo $html->input('Site/nslpn_source_data2', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/nslpn_source_data2', 'Please enter the Nslpn Source Data2.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Site/nslp_url', 'Nslp Url');?>
+ 	<?php echo $html->input('Site/nslp_url', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/nslp_url', 'Please enter the Nslp Url.');?>
+</div>
+<div class="required"> 
+	<?php echo $form->labelTag('Site/lon_lat', 'Lon Lat');?>
+ 	<?php echo $html->input('Site/lon_lat', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Site/lon_lat', 'Please enter the Lon Lat.');?>
+</div>
+<?php echo $html->hidden('Site/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/sites/delete/' . $html->tagValue('Site/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Site/id'));?>
+<li><?php echo $html->link('List Sites', '/sites/index')?></li>
+<li><?php echo $html->link('View Projects', '/projects/index/');?></li>
+<li><?php echo $html->link('Add Projects', '/projects/add/');?></li>
+<li><?php echo $html->link('View Census Designations', '/census_designations/index/');?></li>
+<li><?php echo $html->link('Add Census Designations', '/census_designations/add/');?></li>
+<li><?php echo $html->link('View Site Types', '/site_types/index/');?></li>
+<li><?php echo $html->link('Add Site Types', '/site_types/add/');?></li>
+</ul>

@@ -1,0 +1,57 @@
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	margin:0;
+	padding:0;
+	
+}
+#login {width:30em;padding:20px;margin:auto;margin-top:160px;font-weight:bold;background-color:#0066FF;color:#FFFFFF;text-align:center}
+
+h1 {text-align:center;background-color:#666666;color:#FFCC66; padding:8px;margin:0;}
+#footer {position:fixed; width:100%; margin:auto; bottom:0; left:0; background-color:#666666;color:#FFCC66; padding:8px; text-align:center}
+#footer a:link {  text-decoration: none; color: #ffcc66}
+#footer a:hover {  text-decoration: none; color: #ffffff}
+#footer a:visited {  text-decoration: none; color: #ffcc66}
+#footer a:visited:hover {  text-decoration: none; color: #ffffff}
+
+#middle {padding:20px}
+#instructions {width:300px; float:right; padding:10px; margin:10px;}
+.tables {
+	border: thin solid #CCCCCC;
+}
+#printmenu {float:right; padding:10px; margin:10px; border:solid 1px #cccccc}
+#leftbox {float:left; padding:10px; margin:10px; border:solid 1px #cccccc}
+
+/* notices and errors */
+
+#flashMessage, .error, .error_message {
+color:#900;
+font-size: 16px;
+background-color: #fff;
+margin: 8px 0px;
+font-weight: bold;
+}
+
+#flash{
+	font-color:white;
+}
+
+.error_message {
+clear: both;
+}
+.error em {
+font-size: 18px;
+color: #003d4c;
+}
+.notice {
+color: #656565;
+font-size: 14px;
+background-color: #f4f4f4;
+padding: 0.5em;
+margin: 1em 0;
+display:block;
+}
+.tip {
+color: #656565;
+background-color: #ddd;
+}

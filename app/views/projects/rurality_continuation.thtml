@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title><?php echo $pagetitle; ?></title>
+<?php echo $html->css('ruralityCont'); ?>
+<!-- link href="grant.css" rel="stylesheet" type="text/css" -->
+</head>
+
+<body>
+<?php //pr($project); ?>
+<div style="position:relative;z-index:1;">
+	<?php echo $html->image('rurality-c.png',array("id"=>"large","width"=>"768px","height"=>"1008px")); ?>
+	<?php //echo $html->image('sites2-360-gif8-blank2.gif',array("id"=>"large","width"=>"897px","height"=>"629px")); ?>
+<!-- img src="images/sites2-360-gif82.gif" id="large" width="1056px" height="816px" -->
+  <div id="data">
+  	<?php $row_increment = 52; $top_value_start=145; $left_position_adjustor=array(-15,-15,-110,-135,-130,-155); //original ?>
+  	<?php //$row_increment = 52; $top_value_start=367-56; $left_position_adjustor=array(-56,-76,-86,-96,-106); ?>
+ 	<?php for($i=5 + $page*15, $j=0; $i<count($project['Site']) && $i < 5 + $page*15 + 15; $i++, $j++): ?>
+		<?php if(!isset($project['SiteInsertRowIndex']) || (isset($project['SiteInsertRowIndex']) && $project['SiteInsertRowIndex'] != $i)): ?>
+		  <?php if(false): ?>
+			  <div style="position:absolute;width:12px;top:<?php echo $top_value_start+$row_increment*$j; ?>px;left:<?php echo 76+$left_position_adjustor[0]; ?>px;" >
+		      <p ><?php echo $i+1; ?></p>
+		      </div>
+		  <?php endif; ?>
+	      <div id="data<?php echo $j+1 ?>a">
+		      <p><?php echo $project['Site'][$i]['abbreviation']; ?>
+		      <?php if(false): ?>
+		      	<p><?php echo $project['Site'][$i]['site_address']; /*str_replace(array("\r\n", "\n", "\r"),'<br/>',$project['Site'][$i]['site_address']);*/ ?> <?php echo $project['Site'][$i]['lon_lat']; ?></p>
+		  	  <?php endif; ?>
+		  </div>
+		  <div id="data<?php echo $j+1 ?>b">
+		      <p><?php echo $project['Site'][$i]['SiteType']['cd']; ?></p>
+	      </div>
+		  <div id="data<?php echo $j+1 ?>c">
+		      <p><?php echo $project['Site'][$i]['CensusDesignation']['cd']; ?></p>
+	      </div>
+		  <div id="data<?php echo $j+1 ?>d">
+		      <?php if($project['Site'][$i]['CensusDesignation']['cd'] == 'Census Rural'): ?>
+		   	  	<p>&lt;2,500</p>
+		   	  <?php else: ?>
+		   	  	<p><?php echo number_format($project['Site'][$i]['rwf_census_population']); ?> </p>
+		   	  <?php endif; ?>
+	      </div>
+		  <div id="data<?php echo $j+1 ?>e">
+		      <p ><?php echo $project['Site'][$i]['rurality_points']; ?></p>
+	      </div>
+	    <?php endif; ?>
+    <?php endfor; ?>
+    
+  </div>
+</div>
+</body>
+</html>

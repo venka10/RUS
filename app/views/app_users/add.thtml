@@ -1,0 +1,89 @@
+<h2>New User</h2>
+<form action="<?php echo $html->url('/app_users/add/'.$html->tagValue('AppUser/id')); ?>" method="post">
+<table border="1" align="center" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr><td>
+	<?php echo $form->labelTag('AppUser/first_name', 'First Name');?>
+	</td><td>
+ 	<?php echo $html->input('AppUser/first_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AppUser/first_name', 'Please enter the First Name.');?>
+</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('AppUser/last_name', 'Last Name');?>
+	</td><td>
+ 	<?php echo $html->input('AppUser/last_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AppUser/last_name', 'Please enter the Last Name.');?>
+</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('AppUser/user_name', 'Email');?>
+	</td><td>
+ 	<?php echo $html->input('AppUser/user_name', array('size' => '100'));?>
+	<?php echo $html->tagErrorMsg('AppUser/user_name', 'Please enter a valid email address.');?>
+</td></tr>
+<?php echo $html->hidden('AppUser/pwd1'); ?>
+<tr><td>
+	<?php echo $form->labelTag('AppUser/password', 'Password');?>
+	</td><td>
+ 	<?php echo $html->password('AppUser/password', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AppUser/password', 'Please enter a password atleast 8 characters long.');?>
+</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('AppUser/password2', 'Confirm Password');?>
+	</td><td>
+ 	<?php echo $html->password('AppUser/password2', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AppUser/password2', 'Please enter a password atleast 8 characters long.');?>
+	<?php echo $html->tagErrorMsg('AppUser/pwd', 'Entered passwords do not match.');?>
+</td></tr>
+<tr><td>
+	<?php echo $form->labelTag('AppUser/app_roles_id', 'User type');?>
+	</td><td>
+ 	<?php echo $html->selectTag('AppUser/app_roles_id', $appRoles, $html->tagValue('AppUser/app_roles_id'), array("onchange"=>"processRole(this);"), array(), false);?>
+	<?php echo $html->tagErrorMsg('AppUser/app_roles_id', 'Please select the App Roles.') ?>
+</td></tr>
+<?php if(false): ?>
+<tr><td>
+	<div id="regionDIV1">
+		<?php echo $form->labelTag('AppUser/tandberg_regions_id', 'Tandberg Region');?>
+	</div>
+	</td><td>
+	<div id="regionDIV2">
+	 	<?php echo $html->selectTag('AppUser/tandberg_regions_id', $tandbergRegions, $html->tagValue('AppUser/tandberg_regions_id'), array(), array(), false);?>
+		<?php echo $html->tagErrorMsg('AppUser/tandberg_regions_id', 'Please select the Tandberg Regions.') ?>
+	</div>
+</td></tr>
+<?php endif; ?>
+
+<?php echo $html->hidden('AppUser/id')?>
+<tr><td colspan="2">
+	<?php echo $html->submit('Save');?><input type="button" name="Cancel" value="Cancel" onclick="history.go(-1);" />
+</td></tr>
+</table>
+</form>
+<ul class="actions">
+<!--  <li><?php //echo $html->link('Delete','/app_users/delete/' . $html->tagValue('AppUser/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('AppUser/id'));?>-->
+<li><?php echo $html->link('List Users', '/app_users/index')?></li>
+<?php if(false): ?>
+<li><?php echo $html->link('View Tandberg Regions', '/tandberg_regions/index/');?></li>
+<li><?php echo $html->link('Add Tandberg Region', '/tandberg_regions/add/');?></li>
+<li><?php echo $html->link('View Roles', '/app_roles/index/');?></li>
+<li><?php echo $html->link('Add Role', '/app_roles/add/');?></li>
+<?endif; ?>
+</ul>
+
+<script type="text/javascript">
+function processRole(roleSelectTag){
+	//alert('hi');
+	if(roleSelectTag.options[roleSelectTag.selectedIndex].text == 'Regional Mgr'){
+		$('regionDIV1').style.display="block";
+		$('regionDIV2').style.display="block";
+	}else{
+		$('regionDIV1').style.display="none";
+		$('regionDIV2').style.display="none";
+	}
+	//alert($('regionDIV').style.display);
+}
+processRole($('AppUserAppRolesId'));
+</script>
+
+
+
+

@@ -1,0 +1,32 @@
+<div class="tandbergRegions">
+<h2>List Tandberg Regions</h2>
+
+<table align="center" border="1" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr>
+	<th>Id</th>
+	<th>Name</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($tandbergRegions as $tandbergRegion): ?>
+<tr>
+	<td><?php echo $tandbergRegion['TandbergRegion']['id']; ?></td>
+	<td><?php echo $tandbergRegion['TandbergRegion']['name']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/tandberg_regions/view/' . $tandbergRegion['TandbergRegion']['id'])?>
+		<?php echo $html->link('Edit','/tandberg_regions/edit/' . $tandbergRegion['TandbergRegion']['id'])?>
+		<a href="#" onclick="<?php echo "if(confirm('Are you sure you want to delete id ".$tandbergRegion['TandbergRegion']['id']."')){ document.getElementById('deleteForm".$tandbergRegion['TandbergRegion']['id']."').submit(); }" ?>">Delete</a>		
+	</td>
+	<form id="<?php echo "deleteForm".$tandbergRegion['TandbergRegion']['id']?>" action="<?php echo '/tandberg_regions/delete/' . $tandbergRegion['TandbergRegion']['id']; ?>" method="post"></form>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Tandberg Region', '/tandberg_regions/add'); ?></li>
+</ul>
+</div>
+
+
+<!-- 
+< ?php echo $html->link('Delete','/tandberg_regions/delete/' . $tandbergRegion['TandbergRegion']['id'], null, 'Are you sure you want to delete id ' . $tandbergRegion['TandbergRegion']['id'])?>		
+ -->

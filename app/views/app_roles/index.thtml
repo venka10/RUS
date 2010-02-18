@@ -1,0 +1,29 @@
+<div class="appRoles">
+<h2>List Roles</h2>
+
+<table align="center" border="1" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr>
+	<th>Id</th>
+	<th>Name</th>
+	<th>Description</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($appRoles as $appRole): ?>
+<tr>
+	<td><?php echo $appRole['AppRole']['id']; ?></td>
+	<td><?php echo $appRole['AppRole']['name']; ?></td>
+	<td><?php echo $appRole['AppRole']['description']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/app_roles/view/' . $appRole['AppRole']['id'])?>
+		<?php echo $html->link('Edit','/app_roles/edit/' . $appRole['AppRole']['id'])?>
+		<?php //echo $html->link('Delete','/app_roles/delete/' . $appRole['AppRole']['id'], null, 'Are you sure you want to delete id ' . $appRole['AppRole']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<!-- 
+<ul class="actions">
+	<li><?php //echo $html->link('New App Role', '/app_roles/add'); ?></li>
+</ul>
+ -->
+</div>

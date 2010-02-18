@@ -1,0 +1,38 @@
+<div class="appUsers">
+<h2>Application Users</h2>
+
+<table align="center" border="1" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr>
+	<th>Id</th>
+	<th>First Name</th>
+	<th>Last Name</th>
+	<th>Email</th>
+	<th>Application Role</th>
+	<!-- th>Tandberg Region</th -->
+	<th>Actions</th>
+</tr>
+<?php foreach ($appUsers as $appUser): ?>
+<tr>
+	<td><?php echo $appUser['AppUser']['id']; ?></td>
+	<td><?php echo $appUser['AppUser']['first_name']; ?></td>
+	<td><?php echo $appUser['AppUser']['last_name']; ?></td>
+	<td><?php echo $appUser['AppUser']['user_name']; ?></td>
+	<td>&nbsp;<?php echo $appUser['AppRole']['name']; ?></td>
+	<!-- td>&nbsp;<?php //echo $appUser['TandbergRegion']['name']; ?></td -->
+	<td class="actions">
+		<?php echo $html->link('View','/app_users/view/' . $appUser['AppUser']['id'])?>
+		<?php echo $html->link('Edit','/app_users/edit/' . $appUser['AppUser']['id'])?>
+		<?php if($appUser['AppUser']['id'] != 1 && $session->read('AppRole_name') == 'SuperAdmin'): ?>
+			<a href="#" onclick="<?php echo "if(confirm('Are you sure you want to delete id ".$appUser['AppUser']['id']."')){ document.getElementById('deleteForm".$appUser['AppUser']['id']."').submit(); }" ?>">Delete</a>
+		<?php endif; ?>
+	</td>
+	<form id="<?php echo "deleteForm".$appUser['AppUser']['id']?>" action="<?php echo $html->url('/app_users/delete/'.$appUser['AppUser']['id']); ?>" method="post"></form>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New User', '/app_users/add');  ?></li>
+</ul>
+</div>
+
