@@ -14,7 +14,7 @@
 <tr><td>
 	<?php echo $form->labelTag('Site/site_name', 'Site Name');?>
 	</td><td>
- 	<?php echo $html->input('Site/site_name', array('maxlength' => '62'));?>
+ 	<?php echo $html->input('Site/site_name', array('maxlength' => '75'));?>
 	<?php echo $html->tagErrorMsg('Site/site_name', 'Please enter the Site Name.');?>
 </td><td>Line 1 of Sites worksheet. If abbreviating below, show in parentheses here.</td></tr>
 <tr><td>
