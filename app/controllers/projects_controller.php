@@ -116,6 +116,7 @@ class ProjectsController extends AppController {
 		if($this->Session->read('AppRole_name')=='Writer'){
 			$conditions = $conditions . "and Project.id in (select aup.project_id from app_users_projects aup where aup.app_user_id = " . $this->Session->read('AppUser') . ")";
 		}
+		$this->Pagination->show = 999;
 		list($order,$limit,$page) = $this->Pagination->init($conditions); // Added 
 		//pr($order);
 		if(stristr($order,"AppUser")){
