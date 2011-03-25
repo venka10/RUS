@@ -1,0 +1,6 @@
+#Wed Feb 06 16:46:30 IST 2008
+eclipse.preferences.version=1
+instance/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
+org.eclipse.php.core.contextRoot=
+org.eclipse.php.core.defaultEncoding=
+org.eclipse.php.core.includePath=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<includepath>\r\n\t<includepathentry createdReference\="false" resource\="Cake" path\="/Cake" contentKind\="source" kind\="prj">\r\n</includepathentry>\r\n</includepath>\r\n

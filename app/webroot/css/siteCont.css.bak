@@ -22,8 +22,6 @@ top:0px;
 z-index:100;
 }
 
-
-
 #data1a {
 	position:absolute;
 	width:420px;
@@ -339,15 +337,8 @@ z-index:100;
 	top:626px;
 	left:873px;
 }
-
-
-#data1z { position:absolute; width:20px; top:158px; left:68px; text-align:right; }
-#data2z { position:absolute; width:20px; top:210px; left:68px; text-align:right; }
-#data3z { position:absolute; width:20px; top:262px; left:68px; text-align:right; }
-#data4z { position:absolute; width:20px; top:314px; left:68px; text-align:right; }
-#data5z { position:absolute; width:20px; top:366px; left:68px; text-align:right; }
-#data6z { position:absolute; width:20px; top:418px; left:68px; text-align:right; }
-#data7z { position:absolute; width:20px; top:470px; left:68px; text-align:right; }
-#data8z { position:absolute; width:20px; top:522px; left:68px; text-align:right; }
-#data9z { position:absolute; width:20px; top:574px; left:68px; text-align:right; }
-#data10z { position:absolute; width:20px; top:626px; left:68px; text-align:right; }
+@media print {
+#formbase {
+top:0px;
+}
+}

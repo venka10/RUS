@@ -37,13 +37,6 @@ z-index:100;
 	height:21px;
 }
 
-#data1z { position:absolute; width:20px; top:517px; left:45px; text-align:right; }
-#data2z { position:absolute; width:20px; top:567px; left:45px; text-align:right; }
-#data3z { position:absolute; width:20px; top:617px; left:45px; text-align:right; }
-#data4z { position:absolute; width:20px; top:667px; left:45px; text-align:right; }
-#data5z { position:absolute; width:20px; top:717px; left:45px; text-align:right; }
- 
-
 #data1a {
 	position:absolute;
 	width:320px;

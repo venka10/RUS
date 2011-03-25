@@ -19,15 +19,7 @@
   	<?php //$row_increment = 52; $top_value_start=367-56; $left_position_adjustor=array(-56,-76,-86,-96,-106); ?>
  	<?php $row_increment = 57; $top_value_start=367+12; $left_position_adjustor=array(0,0,0,0,0); //original ?>
   	<?php for($i=0; $i<count($project['Site']) && $i < 5; $i++): ?>
-  		
-		<?php if(!isset($project['SiteInsertRowIndex']) || (isset($project['SiteInsertRowIndex']) && $project['SiteInsertRowIndex'] != $i)): ?>
-		  <div id="data<?php echo $i+1 ?>z">
-			<?php if($i < $project['SiteInsertRowIndex']): ?>
-			<?php 	  echo $i+1; ?>
-			<?php elseif ($i >= $project['SiteInsertRowIndex']): ?>
-			<?php 	  echo $i; ?>
-			<?php endif; ?>
-		  </div>  
+  		<?php if(!isset($project['SiteInsertRowIndex']) || (isset($project['SiteInsertRowIndex']) && $project['SiteInsertRowIndex'] != $i)): ?>
 		  <div id="data<?php echo $i+1 ?>a">
 			    <p><?php echo $project['Site'][$i]['site_name']; ?>
 			    <?php if(false && !empty($project['Site'][$i]['abbreviation'])):?>

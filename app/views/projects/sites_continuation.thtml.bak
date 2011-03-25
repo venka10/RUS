@@ -20,15 +20,7 @@
   	<?php //$row_increment = 52; $top_value_start=158; $left_position_adjustor=array(22,0,0,0,0,0);?>
  	<?php for($i=5 + $page*10, $j=0; $i<count($project['Site']) && $i < 5 + $page*10 + 10; $i++, $j++): ?>
 		<?php if(!isset($project['SiteInsertRowIndex']) || (isset($project['SiteInsertRowIndex']) && $project['SiteInsertRowIndex'] != $i)): ?>
-		  <div id="data<?php echo $j+1 ?>z">
-			<?php if($i < $project['SiteInsertRowIndex']): ?>
-			<?php 	  echo $i+1; ?>
-			<?php elseif ($i >= $project['SiteInsertRowIndex']): ?>
-			<?php 	  echo $i; ?>
-			<?php endif; ?>
-		  </div>  
-		  
-			<?php if(false): ?>
+		  	<?php if(false): ?>
 				 <div id="dataa-1" >
 			     	<p align="right"><?php echo $i+1; ?></p>
 			     </div>

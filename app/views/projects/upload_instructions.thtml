@@ -24,7 +24,7 @@ body {
 			<li>The use of this template is required: <?php echo $html->link('import data template','/rus_sites_upload_template.xls') ?>.  Do not alter the column headings in the first row, they are required for correct data loading.</li>
 			<li>Working in Excel, you can reorder the columns if you like, but if you edit or delete a column header, that data will not be imported. </li>
 			<li>You can reorder and edit the sites online after you upload.</li>
-			<li>If you upload the file a second time, previously entered sites are not changed. Rather, new rows are appended.</li>
+			<li>If you upload the file a second time, records are updated to reflect changes in the spreadsheet. (Exception: the application will always list hub sites at the top.)</li>
 			 
 			
 		</ol>

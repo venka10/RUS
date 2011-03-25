@@ -517,7 +517,7 @@ class ProjectsController extends AppController {
 			}
 		}
 		if(count($data) > 0){
-			return round($nslp_total / count($data));			
+			return round($nslp_total / count($data),3);			
 		}else{
 			return 0;
 		}
@@ -538,7 +538,7 @@ class ProjectsController extends AppController {
 		}
 		
 		if($no_sites > 0){
-			return round($nslp_total / $no_sites);			
+			return round($nslp_total / $no_sites, 3);			
 		}else{
 			return 0;
 		}

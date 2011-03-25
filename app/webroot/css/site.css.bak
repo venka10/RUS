@@ -3,16 +3,17 @@ body {
 	font-size: 10px;
 	margin: 0;
 	padding: 0;	
-	line-height:132%
+	line-height:132%;
+
 }
 p {
 margin:0;
 padding:0;
 }
 #formbase {
-position:relative;
+margin-top:10px;
+margin-left:10px;
 
-top:-20px;
 z-index:1;
 }
 #data {
@@ -20,31 +21,6 @@ position:absolute;
 left:0px;
 top:0px;
 z-index:100;
-}
-
-#data1z {
-position:absolute; width:20px; top:359px; left:25px;
-text-align:right;
-}
-
-#data2z {
-position:absolute; width:20px; top:415px; left:25px;
-text-align:right;
-}
-
-#data3z {
-position:absolute; width:20px; top:474px; left:25px;
-text-align:right;
-}
-
-#data4z {
-position:absolute; width:20px; top:530px; left:25px;
-text-align:right;
-}
-
-#data5z {
-position:absolute; width:20px; top:586px; left:25px;
-text-align:right;
 }
 
 #data1a {
@@ -174,4 +150,9 @@ position:absolute; width:100px; top:586px; left:505px;
 	width:102px;
 	top:586px;
 	left:851px;
+}
+@media print {
+#formbase {
+top:0px;
+}
 }

@@ -17,15 +17,7 @@
   <div id="data">
   	<?php for($i=0; $i<count($project['Site']) && $i < 5; $i++): ?>
   		<?php if(!isset($project['SiteInsertRowIndex']) || (isset($project['SiteInsertRowIndex']) && $project['SiteInsertRowIndex'] != $i)): ?>
-		<div id="data<?php echo $i+1 ?>z">  
-			<?php if($i < $project['SiteInsertRowIndex']): ?>
-			<?php 	  echo $i+1; ?>
-			<?php elseif ($i >= $project['SiteInsertRowIndex']): ?>
-			<?php 	  echo $i; ?>
-			<?php endif; ?>
-		  </div>  
-   
-		<div id="data<?php echo $i+1 ?>a">
+		   <div id="data<?php echo $i+1 ?>a">
 		      <p><?php echo substr($project['Site'][$i]['site_name'],0,86); ?>
 		      <p><?php /* echo $project['Site'][$i]['site_address']; str_replace(array("\r\n", "\n", "\r"),'<br/>',$project['Site'][$i]['site_address']);*/ ?> <?php echo $project['Site'][$i]['lon_lat']; ?></p>
 		   </div>
