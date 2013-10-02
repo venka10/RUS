@@ -30,7 +30,7 @@ class Site extends AppModel {
 	function beforeValidate(){
 		//
 		$valid_data = true;
-				
+		
 		return $valid_data;
 		
 	}
@@ -119,16 +119,7 @@ class Site extends AppModel {
 						'order' => '',
 						'counterCache' => ''
 				),
-
-			'CensusDesignation' =>
-				array('className' => 'CensusDesignation',
-						'foreignKey' => 'census_designations_id',
-						'conditions' => '',
-						'fields' => '',
-						'order' => '',
-						'counterCache' => ''
-				),
-
+		
 			'SiteType' =>
 				array('className' => 'SiteType',
 						'foreignKey' => 'site_types_id',
@@ -144,7 +135,7 @@ class Site extends AppModel {
 		
 		if(isset($site_parm['rwf_census_population'])){
 
-                 if ($site_parm['rwf_census_population'] >= 0 && $site_parm['rwf_census_population'] <=5000){
+                 if ($site_parm['rwf_census_population'] > 0 && $site_parm['rwf_census_population'] <=5000){
                     return 45;
                  }else if($site_parm['rwf_census_population'] > 5000 && $site_parm['rwf_census_population'] <=10000){
                     return 30;
@@ -177,124 +168,6 @@ class Site extends AppModel {
 		//pr($results[0]['Site']);
 		return $results;
 	}
-	
-//function save($data = null, $validate = true, $fieldList = array()) {
-//		$db =& ConnectionManager::getDataSource($this->useDbConfig);
-//		$_whitelist = $this->whitelist;
-//
-//		if (!empty($fieldList)) {
-//			$this->whitelist = $fieldList;
-//		} elseif ($fieldList === null) {
-//			$this->whitelist = array();
-//		}
-//
-//		if ($data) {
-//			if (countdim($data) == 1) {
-//				$this->set(array($this->name => $data));
-//			} else {
-//				$this->set($data);
-//			}
-//		}
-//
-//		if ($validate && !$this->validates()) {
-//			$this->whitelist = $_whitelist;
-//			return false;
-//		}
-//
-//		if (!$this->beforeSave()) {
-//			$this->whitelist = $_whitelist;
-//			return false;
-//		}
-//		$fields = $values = array();
-//
-//		if (count($this->data) > 1) {
-//			$weHaveMulti = true;
-//			$joined = false;
-//		} else {
-//			$weHaveMulti = false;
-//		}
-//		$habtm = count($this->hasAndBelongsToMany);
-//
-//		foreach ($this->data as $n => $v) {
-//			if (isset($weHaveMulti) && isset($v[$n]) && $habtm > 0) {
-//				$joined[] = $v;
-//			} else {
-//				if ($n === $this->name) {
-//					foreach (array('created', 'updated', 'modified') as $field) {
-//						if (array_key_exists($field, $v) && (empty($v[$field]) || $v[$field] === null)) {
-//							unset($v[$field]);
-//						}
-//					}
-//
-//					foreach ($v as $x => $y) {
-//						if ($this->hasField($x)) {
-//							$fields[] = $x;
-//							$values[] = $y;
-//						}
-//					}
-//				}
-//			}
-//		}
-//		$exists = $this->exists();
-//
-//		if (!$exists && $this->hasField('created') && !in_array('created', $fields)) {
-//			$fields[] = 'created';
-//			$values[] = date('Y-m-d H:i:s');
-//		}
-//
-//		if ($this->hasField('modified') && !in_array('modified', $fields)) {
-//			$fields[] = 'modified';
-//			$values[] = date('Y-m-d H:i:s');
-//		}
-//
-//		if ($this->hasField('updated') && !in_array('updated', $fields)) {
-//			$fields[] = 'updated';
-//			$values[] = date('Y-m-d H:i:s');
-//		}
-//
-//		if (!$exists) {
-//			$this->id = false;
-//		}
-//		$this->whitelist = $_whitelist;
-//$this->log('line 274 ' . $this->id);
-//$this->log('save() $data:');
-//$this->log($data);
-//$this->log('save() $this->data:');
-//$this->log($this->data);
-//
-//		if (count($fields)) {
-//			if (!empty($this->id)) {
-//				if ($db->update($this, $fields, $values)) {
-//					if (!empty($joined)) {
-//						$this->__saveMulti($joined, $this->id);
-//					}
-//
-//					$this->afterSave();
-//					$this->data = false;
-//					$this->_clearCache();
-//					return true;
-//				} else {
-//					return false;
-//				}
-//			} else {
-//				if ($db->create($this, $fields, $values)) {
-//					if (!empty($joined)) {
-//						$this->__saveMulti($joined, $this->id);
-//					}
-//
-//					$this->afterSave();
-//					$this->data = false;
-//					$this->_clearCache();
-//					$this->validationErrors = array();
-//					return true;
-//				} else {
-//					return false;
-//				}
-//			}
-//		} else {
-//			return false;
-//		}
-//	}
-	
+		
 }
 ?>

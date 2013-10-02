@@ -5,9 +5,9 @@ class DATABASE_CONFIG {
 		'driver' => 'mysql',
 		'connect' => 'mysql_connect',
 		'host' => 'localhost',
-		'login' => 'rus',
-		'password' => 'rusrus',
-		'database' => 'rus', 
+		'login' => 'dltusda0_rusprod',
+		'password' => 'r00t4canal',
+		'database' => 'dltusda0_rus_prod', 
 		'prefix' => '' 
 	);
 	

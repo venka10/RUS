@@ -17,13 +17,13 @@
 	</td><td>
  	<?php echo $html->input('Site/site_name', array('maxlength' => '75'));?>
 	<?php echo $html->tagErrorMsg('Site/site_name', 'Please enter the Site Name.');?>
-</td><td>Line 1 of Sites worksheet. If abbreviating below, show in parentheses here.</td></tr>
-<tr><td>
+</td><td>The complete and formal name of the site. Used on all worksheets.</td></tr>
+<!--<tr><td>
 	<?php echo $form->labelTag('Site/abbreviation', 'Rurality name (census unit)');?>
 	</td><td>
  	<?php echo $html->input('Site/abbreviation', array('maxlength' => '62'));?>
 	<?php echo $html->tagErrorMsg('Site/abbreviation', 'Please enter the Rurality name (census unit).');?>
-</td><td>See example on p50 of Guidelines</td></tr>
+</td><td>See example on p50 of Guidelines</td></tr>-->
 <tr><td>
 	<?php echo $form->labelTag('Site/site_address', 'Address/Location');?>
 	</td><td>
@@ -65,18 +65,14 @@
  	<?php echo $html->input('Site/congressional_district', array('maxlength' => '32'));?>
 	<?php echo $html->tagErrorMsg('Site/congressional_district', 'Please enter the Congressional District.');?>
 	</td>
-	<td><?php echo $html->link('http://www.congressmerge.com/onlinedb/index.htm','http://www.congressmerge.com/onlinedb/index.htm',array('target'=>'_new')); ?></td>
+	<td><?php echo $html->link('http://www.house.gov/representatives/find/','http://www.house.gov/representatives/find/',array('target'=>'_new')); ?></td>
 </tr>
 <tr><td>
-	<?php echo $form->labelTag('Site/census_designations_id', 'Census Designation');?>
+	<?php echo $form->labelTag('Site/town_or_place_name', 'Town or Place Name');?>
 	</td><td>
- 	<?php echo $html->selectTag('Site/census_designations_id', $censusDesignations, $html->tagValue('Site/census_designations_id'), array("onchange"=>"doCensusDesignation_OnChange(this);"), array(), false);?>
-	<?php echo $html->tagErrorMsg('Site/census_designations_id', 'Please select a Census Designation.') ?>
-	</td>	
-	<td><?php echo $html->link('http://factfinder.census.gov/servlet/ReferenceMapFramesetServlet?_bm=y&-ds_name=DEC_2000_SF1_U&-tree_id=420&-bucket_id=50&-_caller=dataset&-_lang=en',
-								'http://factfinder.census.gov/servlet/ReferenceMapFramesetServlet?_bm=y&-ds_name=DEC_2000_SF1_U&-tree_id=420&-bucket_id=50&-_caller=dataset&-_lang=en',
-								array('target'=>'_new')); ?>
-	</td>
+ 	<?php echo $html->input('Site/town_or_place_name', array('maxlength'=>'4000'));?>
+	<?php echo $html->tagErrorMsg('Site/town_or_place_name', 'Please select a Town or Place Name.') ?></td>
+	<td>For Rurality Worksheet	</td>
 </tr>
 <tr><td>
 	<?php echo $form->labelTag('Site/rwf_census_population', 'Census Population');?>
@@ -104,8 +100,8 @@
 	<?php echo $form->labelTag('Site/nslpf_perc_eligible', '% NSLP Eligible');?>
 	</td><td>
  	<?php echo $html->input('Site/nslpf_perc_eligible', array('maxlength' => '5'));?>%
-	<?php echo $html->tagErrorMsg('Site/nslpf_perc_eligible', 'Please enter the % NSLP Eligible.');?>
-</td><td>Enter up to 2 decimal places</td></tr>
+	<?php echo $html->tagErrorMsg('Site/nslpf_perc_eligible', 'Enter percentages exactly as received from the source.');?>
+</td><td>Enter percentages exactly as received from the source.</td></tr>
 <?php if(false): ?>
 		<tr><td>
 			<?php echo $form->labelTag('Site/nslpf_source_data', 'NSLP Data Source');?>

@@ -15,20 +15,18 @@
 	<?php //echo $html->image('sites2-360-gif8-blank2.gif',array("id"=>"large","width"=>"897px","height"=>"629px")); ?>
 <!-- img src="images/sites2-360-gif82.gif" id="large" width="1056px" height="816px" -->
   <div id="data">
-  	<?php for($i=5 + $page*16, $j=0; $i<count($project['Site']) && $i < 5 + $page*16 + 16; $i++, $j++): ?>
-  		<?php if(!isset($project['SiteInsertRowIndex']) || (isset($project['SiteInsertRowIndex']) && $project['SiteInsertRowIndex'] != $i)): ?>
-		  <?php if(false): ?>
-			  <div style="position:absolute;width:12px;top:<?php echo $top_value_start+$row_increment*$j; ?>px;left:<?php echo 76+$left_position_adjustor[0]; ?>px;" >
-		      <p ><?php echo $i+1; ?></p>
-		      </div>
-	      <?php endif; ?>
- 	      <div id="data<?php echo $j+1 ?>z">  
+  	<?php for($i=5 + $page*15, $j=0; $i<count($project['Site']) && $i < 5 + $page*15 + 15; $i++, $j++): ?>
+  		<?php if(!($project['SiteInsertRowIndex'] == $i || $project['SiteInsertRowIndex1'] == $i)): ?>
+		<div id="data<?php echo $j+1 ?>z">  
 			<?php if($i < $project['SiteInsertRowIndex']): ?>
 			<?php 	  echo $i+1; ?>
-			<?php elseif ($i >= $project['SiteInsertRowIndex']): ?>
-			<?php 	  echo $i; ?>
+			<?php elseif ($i >= $project['SiteInsertRowIndex'] && $i < $project['SiteInsertRowIndex1']): ?>
+			<?php 	  echo ($i-$project['SiteInsertRowIndex']); ?>
+                     <?php elseif ($i >= $project['SiteInsertRowIndex1']): ?>
+                     <?php    echo ($i-$project['SiteInsertRowIndex'])-1; ?>
 			<?php endif; ?>
 		  </div>  
+
 
 		<div id="data<?php echo $j+1 ?>a">
 		      <p><?php echo substr($project['Site'][$i]['site_name'],0,86); ?>

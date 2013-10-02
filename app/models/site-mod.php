@@ -30,7 +30,12 @@ class Site extends AppModel {
 	function beforeValidate(){
 		//
 		$valid_data = true;
-				
+		//06012013 - VENKA
+              //if( isset($this->data['Site']['census_designations_id']) && ($this->data['Site']['census_designations_id'] > 1 && (!isset($this->data['Site']['rwf_census_population']) || !preg_match(VALID_NUMBER, $this->data['Site']['rwf_census_population'])) )){
+		//	$this->invalidate('rwf_census_population');
+		//	$valid_data = $valid_data && false;
+		//}
+		
 		return $valid_data;
 		
 	}
@@ -119,15 +124,15 @@ class Site extends AppModel {
 						'order' => '',
 						'counterCache' => ''
 				),
-
-			'CensusDesignation' =>
-				array('className' => 'CensusDesignation',
-						'foreignKey' => 'census_designations_id',
-						'conditions' => '',
-						'fields' => '',
-						'order' => '',
-						'counterCache' => ''
-				),
+                     //06012013 - VENKA
+			//'CensusDesignation' =>
+			//	array('className' => 'CensusDesignation',
+			//			'foreignKey' => 'census_designations_id',
+			//			'conditions' => '',
+			//			'fields' => '',
+			//			'order' => '',
+			//			'counterCache' => ''
+			//	),
 
 			'SiteType' =>
 				array('className' => 'SiteType',
@@ -141,22 +146,9 @@ class Site extends AppModel {
 	);
 
 	function calculateRuralityPoints($site_parm){
-		
-		if(isset($site_parm['rwf_census_population'])){
-
-                 if ($site_parm['rwf_census_population'] >= 0 && $site_parm['rwf_census_population'] <=5000){
-                    return 45;
-                 }else if($site_parm['rwf_census_population'] > 5000 && $site_parm['rwf_census_population'] <=10000){
-                    return 30;
-                 }else if($site_parm['rwf_census_population'] > 10000 && $site_parm['rwf_census_population'] <=20000){
-                    return 15;
-                 }else{
-                    return 0;
-                 } 
-		}else{
-			return 0;
-		}
-		
+	
+//06012013 - VENKA	
+         return 0;		
 	}
 	
 	function afterFind($results){

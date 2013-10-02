@@ -18,22 +18,20 @@
   	<?php $row_increment = 52; $top_value_start=145; $left_position_adjustor=array(-15,-15,-110,-135,-130,-155); //original ?>
   	<?php //$row_increment = 52; $top_value_start=367-56; $left_position_adjustor=array(-56,-76,-86,-96,-106); ?>
  	<?php for($i=5 + $page*15, $j=0; $i<count($project['Site']) && $i < 5 + $page*15 + 15; $i++, $j++): ?>
-		<?php if(!isset($project['SiteInsertRowIndex']) || (isset($project['SiteInsertRowIndex']) && $project['SiteInsertRowIndex'] != $i)): ?>
-		  <?php if(false): ?>
-			  <div style="position:absolute;width:12px;top:<?php echo $top_value_start+$row_increment*$j; ?>px;left:<?php echo 76+$left_position_adjustor[0]; ?>px;" >
-		      <p ><?php echo $i+1; ?></p>
-		      </div>
-		  <?php endif; ?>
-		  <div id="data<?php echo $j+1 ?>z">  
+		<?php if(!($project['SiteInsertRowIndex'] == $i || $project['SiteInsertRowIndex1'] == $i)): ?>
+		<div id="data<?php echo $j+1 ?>z">  
 			<?php if($i < $project['SiteInsertRowIndex']): ?>
 			<?php 	  echo $i+1; ?>
-			<?php elseif ($i >= $project['SiteInsertRowIndex']): ?>
-			<?php 	  echo $i; ?>
+			<?php elseif ($i >= $project['SiteInsertRowIndex'] && $i < $project['SiteInsertRowIndex1']): ?>
+			<?php 	  echo ($i-$project['SiteInsertRowIndex']); ?>
+                     <?php elseif ($i >= $project['SiteInsertRowIndex1']): ?>
+                     <?php    echo ($i-$project['SiteInsertRowIndex'])-1; ?>
 			<?php endif; ?>
 		  </div>  
 	      <div id="data<?php echo $j+1 ?>a">
-		      <p><?php echo $project['Site'][$i]['abbreviation']; ?>
-		      <?php if(false): ?>
+		      <p><?php echo $project['Site'][$i]['site_name']; ?>
+		      <p><?php echo $project['Site'][$i]['site_address'];?></p>
+                    <?php if(false): ?>
 		      	<p><?php echo $project['Site'][$i]['site_address']; /*str_replace(array("\r\n", "\n", "\r"),'<br/>',$project['Site'][$i]['site_address']);*/ ?> <?php echo $project['Site'][$i]['lon_lat']; ?></p>
 		  	  <?php endif; ?>
 		  </div>
@@ -41,7 +39,7 @@
 		      <p><?php echo $project['Site'][$i]['SiteType']['cd']; ?></p>
 	      </div>
 		  <div id="data<?php echo $j+1 ?>c">
-		      <p><?php echo $project['Site'][$i]['CensusDesignation']['cd']; ?></p>
+		      <p><?php echo $project['Site'][$i]['town_or_place_name']; ?></p>
 	      </div>
 		  <div id="data<?php echo $j+1 ?>d">
 		      <?php if($project['Site'][$i]['CensusDesignation']['cd'] == 'Census Rural'): ?>

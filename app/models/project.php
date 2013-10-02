@@ -44,7 +44,7 @@ class Project extends AppModel {
 						'offset' => '',
 						'dependent' => '',
 						'exclusive' => '',
-						'finderQuery' => 'SELECT Site.id, Site.projects_id, Site.census_designations_id, Site.site_types_id, Site.site_name, Site.site_address, Site.county, Site.school_district, Site.congressional_district, Site.rwf_census_population, Site.nslpf_total_students, Site.nslpf_perc_eligible, Site.nslpf_source_data, Site.nslpf_source_data2, Site.nslp_url, Site.lon_lat, Site.abbreviation, Site.order_no FROM sites AS Site, site_types as SiteType WHERE Site.site_types_id=SiteType.id and Site.projects_id IN ({$__cakeID__$}) ORDER BY SiteType.order_no ASC, order_no ASC',
+						'finderQuery' => 'SELECT Site.id, Site.projects_id, Site.town_or_place_name, Site.site_types_id, Site.site_name, Site.site_address, Site.county, Site.school_district, Site.congressional_district, Site.rwf_census_population, Site.nslpf_total_students, Site.nslpf_perc_eligible, Site.nslpf_source_data, Site.nslpf_source_data2, Site.nslp_url, Site.lon_lat, Site.abbreviation, Site.order_no FROM sites AS Site, site_types as SiteType WHERE Site.site_types_id=SiteType.id and Site.projects_id IN ({$__cakeID__$}) ORDER BY SiteType.order_no ASC, order_no ASC',
 						'counterQuery' => ''
 				),
 

@@ -17,10 +17,10 @@ class ProjectsController extends AppController {
 			"COUNTY"=>"county",
 			"SCHOOL DISTRICT"=>"school_district",
 			"CONGRESSIONAL DISTRICT"=>"congressional_district",
-			"CENSUS DESIGNATION"=>"census_designations_id",
 			"CENSUS POPULATION"=>"rwf_census_population",
 			"TOTAL STUDENTS"=>"nslpf_total_students",
-			"% NSLP ELIGIBLE"=>"nslpf_perc_eligible"
+			"% NSLP ELIGIBLE"=>"nslpf_perc_eligible",
+                     "TOWN OR PLACE NAME"=>"town_or_place_name"
 		);
 		$tmpfilename = $this->params['form']['datafileXLS']['tmp_name'];
 		$this->Excel->file = $tmpfilename;
@@ -196,7 +196,7 @@ class ProjectsController extends AppController {
 
 		$nslp_continuation_sheets = 0;
 		if($no_of_sites > 0){
-			$nslp_continuation_sheets = ceil($no_of_sites/16);
+			$nslp_continuation_sheets = ceil($no_of_sites/15);
 		}
 		$this->set('no_nslp_continuation_sheets',$nslp_continuation_sheets);
 	}
@@ -445,6 +445,9 @@ class ProjectsController extends AppController {
 				if($data['Site'][$i]['SiteType']['cd'] != 'Hub' && $data['Site'][$i-1]['SiteType']['cd'] == 'Hub'){
 					$data['SiteInsertRowIndex'] = $i;
 				}
+                            //if($data['Site'][$i]['SiteType']['cd'] != 'Hub/End-User' && $data['Site'][$i-1]['SiteType']['cd'] == 'Hub/End-User'){
+				//	$data['SiteInsertRowIndex1'] = ($i+1);
+				//}
 			}
 		}
 		$return = array();
@@ -454,18 +457,32 @@ class ProjectsController extends AppController {
 		}else{
 			$no_rows = count($data['Site'])+1;
 		}
+              if(!isset($data['SiteInsertRowIndex1'])){
+			$data['SiteInsertRowIndex1'] = count($data['Site'])+1;
+		}else{
+			$no_rows = $no_rows+1; 
+          
+		}
+ 
 		//pr($data['SiteInsertRowIndex']);
 		for($i=0; $i<$no_rows; $i++){
 			if($i < $data['SiteInsertRowIndex'] && $i<$no_rows ){
 				$return[] = $data['Site'][$i];
 			}else if($i == $data['SiteInsertRowIndex']){
 				$return[] = array();
+			}else if($i > $data['SiteInsertRowIndex'] && $i < $data['SiteInsertRowIndex1'] ){
+                            if(isset($data['Site'][$i-1])){
+                              $return[] = $data['Site'][$i-1];
+                            } 
+                     }else if($i == $data['SiteInsertRowIndex1']){
+				$return[] = array();
 			}else{
-				if(isset($data['Site'][$i-1])){
-					$return[] = $data['Site'][$i-1];
+				if(isset($data['Site'][$i-2])){
+					$return[] = $data['Site'][$i-2];
 				}
 			}
 		}
+
 		$data['Site'] = $return;
 		return $data;
 	}

@@ -16,29 +16,33 @@
 <!-- img src="images/sites2-360-gif82.gif" id="large" width="1056px" height="816px" -->
   <div id="data">
   	<?php for($i=0; $i<count($project['Site']) && $i < 5; $i++): ?>
-  		<?php if(!isset($project['SiteInsertRowIndex']) || (isset($project['SiteInsertRowIndex']) && $project['SiteInsertRowIndex'] != $i)): ?>
-		 <div id="data<?php echo $i+1 ?>z"> 
+  		<?php if(!($project['SiteInsertRowIndex'] == $i || $project['SiteInsertRowIndex1'] == $i)): ?>
+		<div id="data<?php echo $i+1 ?>z">  
 			<?php if($i < $project['SiteInsertRowIndex']): ?>
 			<?php 	  echo $i+1; ?>
-			<?php elseif ($i >= $project['SiteInsertRowIndex']): ?>
-			<?php 	  echo $i; ?>
+			<?php elseif ($i >= $project['SiteInsertRowIndex'] && $i < $project['SiteInsertRowIndex1']): ?>
+			<?php 	  echo ($i-$project['SiteInsertRowIndex']); ?>
+                     <?php elseif ($i >= $project['SiteInsertRowIndex1']): ?>
+                     <?php    echo ($i-$project['SiteInsertRowIndex'])-1; ?>
 			<?php endif; ?>
 		  </div>    
 		<div id="data<?php echo $i+1 ?>a">
-		      <p><?php echo $project['Site'][$i]['abbreviation']; ?>
-		      <?php if(false && !empty($project['Site'][$i]['abbreviation'])):?>
+		      <p><?php echo $project['Site'][$i]['site_name']; ?>
+		      <p><?php echo $project['Site'][$i]['site_address'];?></p>
+                    <?php if(false && !empty($project['Site'][$i]['abbreviation'])):?>
 		      &nbsp;<?php echo "(".$project['Site'][$i]['site_name'].")" ?>
 		      <?php endif; ?>
 		      
 			  <?php if(false): ?>
 		      	<p><?php echo $project['Site'][$i]['site_address']; /*str_replace(array("\r\n", "\n", "\r"),'<br/>',$project['Site'][$i]['site_address']);*/ ?> <?php echo $project['Site'][$i]['lon_lat']; ?></p>
 		   	  <?php endif; ?>
+                     
 		   </div>
 		   <div id="data<?php echo $i+1 ?>b">
 		   	  <p><?php echo $project['Site'][$i]['SiteType']['cd']; ?></p>
 	       </div>
 		   <div id="data<?php echo $i+1 ?>c">
-		   	  <p><?php echo $project['Site'][$i]['CensusDesignation']['cd']; ?></p>
+		   	  <p><?php echo $project['Site'][$i]['town_or_place_name']; ?></p>
 	       </div>
 		   <div id="data<?php echo $i+1 ?>d">
 		   	  <?php if($project['Site'][$i]['CensusDesignation']['cd'] == 'Census Rural'): ?>

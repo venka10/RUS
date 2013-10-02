@@ -20,15 +20,16 @@
  	<?php $row_increment = 57; $top_value_start=367+12; $left_position_adjustor=array(0,0,0,0,0); //original ?>
   	<?php for($i=0; $i<count($project['Site']) && $i < 5; $i++): ?>
   		
-		<?php if(!isset($project['SiteInsertRowIndex']) || (isset($project['SiteInsertRowIndex']) && $project['SiteInsertRowIndex'] != $i)): ?>
-		  <div id="data<?php echo $i+1 ?>z">
+		<?php if(!($project['SiteInsertRowIndex'] == $i || $project['SiteInsertRowIndex1'] == $i)): ?>
+		<div id="data<?php echo $i+1 ?>z">  
 			<?php if($i < $project['SiteInsertRowIndex']): ?>
 			<?php 	  echo $i+1; ?>
-			<?php elseif ($i >= $project['SiteInsertRowIndex']): ?>
-			<?php 	  echo $i; ?>
+			<?php elseif ($i >= $project['SiteInsertRowIndex'] && $i < $project['SiteInsertRowIndex1']): ?>
+			<?php 	  echo ($i-$project['SiteInsertRowIndex']); ?>
+                     <?php elseif ($i >= $project['SiteInsertRowIndex1']): ?>
+                     <?php    echo ($i-$project['SiteInsertRowIndex'])-1; ?>
 			<?php endif; ?>
-		  </div>  
-		  <div id="data<?php echo $i+1 ?>a">
+		  </div>  		  <div id="data<?php echo $i+1 ?>a">
 			    <p><?php echo $project['Site'][$i]['site_name']; ?>
 			    <?php if(false && !empty($project['Site'][$i]['abbreviation'])):?>
 			    &nbsp;<?php echo "(".$project['Site'][$i]['abbreviation'].")"; ?>

@@ -16,12 +16,14 @@
 <!-- img src="images/sites2-360-gif82.gif" id="large" width="1056px" height="816px" -->
   <div id="data">
   	<?php for($i=0; $i<count($project['Site']) && $i < 5; $i++): ?>
-  		<?php if(!isset($project['SiteInsertRowIndex']) || (isset($project['SiteInsertRowIndex']) && $project['SiteInsertRowIndex'] != $i)): ?>
+  		<?php if(!($project['SiteInsertRowIndex'] == $i || $project['SiteInsertRowIndex1'] == $i)): ?>
 		<div id="data<?php echo $i+1 ?>z">  
 			<?php if($i < $project['SiteInsertRowIndex']): ?>
 			<?php 	  echo $i+1; ?>
-			<?php elseif ($i >= $project['SiteInsertRowIndex']): ?>
-			<?php 	  echo $i; ?>
+			<?php elseif ($i >= $project['SiteInsertRowIndex'] && $i < $project['SiteInsertRowIndex1']): ?>
+			<?php 	  echo ($i-$project['SiteInsertRowIndex']); ?>
+                     <?php elseif ($i >= $project['SiteInsertRowIndex1']): ?>
+                     <?php    echo ($i-$project['SiteInsertRowIndex'])-1; ?>
 			<?php endif; ?>
 		  </div>  
    

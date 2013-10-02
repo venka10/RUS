@@ -1,4 +1,3 @@
-
 <?php if(isset($output)): ?>
 <div style='border-style:collapse;border-width:thin;border-color:gray;'>
 <?php echo $output?>
@@ -50,14 +49,13 @@
 <tr>
 	<th>Order</th>
 	<th>Site Name</th>
-	<th>Short name/Location</th>
 	<th>Address/Location</th>
 	<th>Location 2</th>
 	<th>Site Designation</th>
 	<th>County</th>
 	<th>School District</th>
 	<th>Congressional District</th>
-	<th>Census Designation</th>
+	<th>Town or Place Name</th>
 	<th>Census Population</th>
 	<th>Rurality Points</th>
 	<th>Total Students</th>
@@ -80,14 +78,13 @@
 		
   </td>
 	<td><?php echo $site['site_name']; ?></td>
-	<td><?php echo $site['abbreviation']; ?></td>
 	<td><?php echo $site['site_address']; ?></td>
 	<td><?php echo $site['lon_lat']; ?></td>
 	<td><?php echo $site['SiteType']['cd']; ?></td>
 	<td><?php echo $site['county']; ?></td>
 	<td><?php echo $site['school_district']; ?></td>
 	<td><?php echo $site['congressional_district']; ?></td>
-	<td><?php echo $site['CensusDesignation']['cd']; ?></td>
+	<td><?php echo $site['town_or_place_name']; ?></td>
 	<td><?php echo $site['rwf_census_population']; ?></td>
 	<td><?php echo $site['rurality_points']; ?></td>
 	<td><?php echo $site['nslpf_total_students']; ?></td>
